@@ -6,6 +6,7 @@ import androidx.compose.material.Button
 import androidx.compose.material.TabRowDefaults.Divider
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -14,6 +15,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.ClassicaMusic.inventory.data.OrderUiState
 
 import com.example.inventory.ui.item.ItemEntryViewModel
+import kotlin.concurrent.timerTask
 
 //import kotlinx.coroutines.DefaultExecutor.delay
 
@@ -31,12 +33,17 @@ fun GameScreen(
     elfin:List<String>,
     modifier: Modifier = Modifier,
     onNextButtonClicked:() -> Unit ={},
+    onSelectionChanged:(String) -> Unit ={},
     viewModel: OrderViewModel = viewModel(),
     mainviewModel: ItemEntryViewModel = viewModel(factory = AppViewModelProvider.Factory)
 
     ) {
 
+    var selectedValue by rememberSaveable{ mutableStateOf("")}
+
     val result by mainviewModel.readAll.collectAsState(initial = emptyList())
+
+
 
     Column(
         modifier = modifier

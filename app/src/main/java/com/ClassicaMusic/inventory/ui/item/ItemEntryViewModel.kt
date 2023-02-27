@@ -17,16 +17,18 @@
 package com.example.inventory.ui.item
 
 import android.util.Log
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
+import androidx.compose.runtime.*
+import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.ClassicaMusic.inventory.data.Item
 import com.ClassicaMusic.inventory.data.ItemsRepository
 import com.ClassicaMusic.inventory.data.OrderUiState
+import com.ClassicaMusic.inventory.ui.Ask
+import com.ClassicaMusic.inventory.ui.OrderViewModel
+import com.example.inventory.ui.item.ItemEntryViewModel.king.piramide
+import com.example.inventory.ui.item.ItemEntryViewModel.kingWork.sol
 
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
@@ -52,12 +54,30 @@ class ItemEntryViewModel(private val itemsRepository: ItemsRepository) : ViewMod
     var artoUiState: StateFlow<HulkUiState> = _artoUiState.asStateFlow()
 
 
+    private val _mar = piramide.toMutableStateList()
+    val mar: List<Int>
+        get() = _mar
+
+
     private var Palabras: MutableSet<String> = mutableSetOf()
+    private var Palabra: MutableSet<Int> = mutableSetOf()
+
     private var Pala: MutableSet<String> = mutableSetOf()
     private var World: MutableSet<String> = mutableSetOf()
     private var Worlds: List<Item> = listOf()
+    private var Wolf: List<String> = listOf()
     lateinit var pina: String
     lateinit var hulk: String
+    lateinit var hilk: String
+   // ----------------------------------
+
+
+    val texto : String by lazy { reloj(pina) }
+    val telo : String by lazy { ecua(hilk) }
+    val exit : MutableSet<String> by lazy { nilo()}
+    val essit : MutableSet<Int> by lazy { amazo()}
+
+    // ----------------------------------
 
     private var k: Int = 0
     private val TAG: String = "book"
@@ -69,36 +89,6 @@ class ItemEntryViewModel(private val itemsRepository: ItemsRepository) : ViewMod
      */
 
 
-
-    fun checkMito(g: String, h: Int) {
-        viewModelScope.launch {
-            pina = g
-            if (e <= h) {
-                Palabras.add(pina)
-                var eli = itemUiState.alfin
-                // Log.d(TAG, " Este es shin en Book------>>> es: $eli!")
-                var pelo = Palabras.size
-                var tin = getItem()
-                //var mas = listade(tin)
-                if (pelo == h) {
-                    //Log.d(TAG, " Este es shin en Book de relatividad------>>> es: $Palabras!")
-                    var tren = listade(Palabras)
-                    setNaipe(tren)
-                    for (i in 0..h-1){
-                        updateUiStateto(i, tren[i])
-                        inserItem()
-                    }
-                    var elo = updateUiSta(tren)
-                    updateUiState(tren)
-                    uptaItem()
-                }
-                e += 1
-                var english = artoUiState.value.alfin
-                Log.d(TAG, " Este es shin en Book------>>> es: $english!")
-                checko()
-            }
-        }
-    }
 
     fun chickMito(g: String, h: Int) {
         viewModelScope.launch {
@@ -124,8 +114,7 @@ class ItemEntryViewModel(private val itemsRepository: ItemsRepository) : ViewMod
                     var hulk = elote()
                     updateUiState(tren)
                     uptaItem()
-                    var elit = getiItem()
-                    Log.d(TAG, " Este es shin en Book---c--->>> es: $elit!")
+                   // Log.d(TAG, " Este es shin en Book---c--->>> es: $elit!")
                 }
                 e += 1
                 var eng = artoUiState.value.alfin
@@ -138,15 +127,99 @@ class ItemEntryViewModel(private val itemsRepository: ItemsRepository) : ViewMod
 
 
 
-    fun PalabrasUsa(guessdWord: String, mas: Int, l: Long ) {
+    fun PalabrasUsa(guessdWord: String, mas: Int, l: Long, m: List<Item> ) {
         pina = guessdWord
+        Worlds = m
+        var p = k
+        var h=k
+        var z = Worlds.size
+        World.add(pina)
+        var mit = World.size
+        for (i in 0..z-1){
+            if(Worlds[i].name == pina){
+                Pala.add(pina)
+                nilo()
+                Palabra.add(i)
+                amazo()
+                h+=1
+                if(mit == mas-1){
+                    mir(h)
+                    sir(h)
+                    var nil = h.toString()
+
+                    ecua(nil)
+                    Log.d(TAG, "Hello -----------en--------------medida 0: $h !")
+                }
+
+            }
+        }
 
 
+        if (mit >= mas-1) {
+            mir(8)
+            Log.d(TAG, "Hello -----------en--------------medida 0: $mit!")
+
+
+            val pi = 151000 - l
+            val time = pi.toString()
+            pina = time
+            reloj(pina)
+
+            Log.d(TAG, "Hello -----------en--------------medida 0: $pi !")
+            Log.d(TAG, "Hello -----------en--------------medida 0: $pi !")
+
+        }
+    }
+
+    fun subir (){
+        chocko(10, texto)
+        chocko(11, telo)
+    }
+    fun nilo(): MutableSet<String> {
+        return Pala
+    }
+    fun amazo(): MutableSet<Int> {
+        return Palabra
+    }
+
+
+    fun montain(): Flow<String> {
+        val uno = "texto"
+        val flow = flow<String> { emit(uno)  }
+        return flow
     }
 
 
 
 
+    val gol : Flow<String> = montain()
+
+    fun ecua(h: String): String {
+        hulk = h
+        return hulk
+    }
+
+
+    suspend fun InsertarBD(i:Int, n:String){
+        updateUiStateto(i, n)
+        inserItem()
+    }
+    fun chocko(i:Int, n:String) {
+        viewModelScope.launch {
+            InsertarBD(i, n)
+        }
+    }
+
+    suspend fun BorrarBD(i:Int, n:String){
+        updateUiStateto(i, n)
+        borrarItem()
+    }
+    fun chucki(i:Int, n:String) {
+        viewModelScope.launch {
+            BorrarBD(i, n)
+
+        }
+    }
 
 
     fun listade(a: MutableSet<String>): List<String> {
@@ -163,27 +236,79 @@ class ItemEntryViewModel(private val itemsRepository: ItemsRepository) : ViewMod
 
     }
 
-    fun listadeflow(a: Unit): String {
-        val ls = a as List<*>
-        var ten = ls[0].toString()
-        return ten
 
+
+
+    fun topdio(h: String): Flow<String> {
+        pina = h
+        val flow = flow<String> { emit(pina )  }
+        return flow
     }
 
-    fun dulf(item: List<String>) {
-        val toque = item
-        Log.d(TAG, "Hello -----------en---------------shenshen: $toque !")
-        var eloquen = itemUiState.alfin
-        // Log.d(TAG, "Hello -----------enter---------------Ganges: $eloquen!")
-        // elote()
+
+
+
+    val bit : Flow<String> = topdio("hello")
+
+
+
+    object king{
+
+        var piramide = number()
+
+        fun number(): List<Int> {
+            val miel = listOf<Int>(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16)
+            return miel
+        }
     }
 
+
+    var camello = sol.toMutableStateList()
+
+    fun mir(h:Int){
+        if (camello.contains(h)){
+            camello.remove(h)
+        }
+        prueba()
+
+    }
+    fun sir(h:Int) {
+        if (mar.contains(h)) {
+            _mar.remove(h)
+        }
+        prueba()
+    }
+
+
+
+
+
+    fun prueba() {
+        var g = k
+        val mir = mar.size
+        Log.d(TAG, " Este es shin en Book---1--->>> es: $mir!")
+        val miler = camello.size
+        Log.d(TAG, " Este es shin en Book----1-->>> es: $miler!")
+    }
+
+    var we = prueba()
+
+    object kingWork{
+
+        var sol = number()
+
+        fun number(): List<Int> {
+            val miel = listOf<Int>(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16)
+            return miel
+        }
+    }
 
 
 
     fun trelo() {
         pina = "hulk"
         hulk = "ok"
+        hilk = "elo"
     }
 
 
@@ -213,9 +338,7 @@ class ItemEntryViewModel(private val itemsRepository: ItemsRepository) : ViewMod
 
     fun checko() {
         viewModelScope.launch {
-            val huj = getsItem()
-            setNaipe(huj)
-            Log.d(TAG, "Hello -----------en---------------shenshen:$huj !")
+
         }
     }
 
@@ -234,49 +357,13 @@ class ItemEntryViewModel(private val itemsRepository: ItemsRepository) : ViewMod
     }
 
 
-    suspend fun getiItem(): String {
-        var uno =  itemsRepository.getItemStream(1)
-        var mil = uno.onEach { values -> hulk = values?.name ?: String() }.collect()
-        Log.d(TAG, "Hello -----------en--------------shenshen: $hulk !")
-        return hulk
-    }
     var readAll = itemsRepository.getAllItemsStream()
-    suspend fun gitiItem(): String {
-        var uno =  itemsRepository.getItemStream(1)
-        var mil = uno.onEach { values -> hulk = values?.name ?: String() }.collect()
-        Log.d(TAG, "Hello -----------en--------------shenshen: $hulk !")
-        return hulk
-    }
-
-    suspend fun getItem(): List<Item> {
-        val gun = itemsRepository.getAllItemsStream()
-        val ten = gun.onEach { values -> Worlds = values }.collect()
-        Log.d(TAG, "Hello -----------en--------------shenshen: $World !")
-        return Worlds
-    }
-
-
-    suspend fun getsItem(): List<String> {
-        val gun = itemsRepository.getAllItemsStream()
-        val ten = gun.onEach { values -> hulk = values.toString() }.collect()
-        Log.d(TAG, "Hello -----------en--------------shenshen: $World !")
-        World.add(hulk)
-        val en = listade(World)
-        Log.d(TAG, "Hello -----------en--------------shenshen: $en !")
-        return en
-    }
 
 
 
 
-    fun chicko() {
-        viewModelScope.launch {
-            val gun = itemsRepository.getAllItemsStream()
-            val ten = gun.onEach { values -> hulk = values.toString() }.collect()
-            Log.d(TAG, "Hello -----------en--------------shenshen: $World !")
-            World.add(hulk)
-        }
-    }
+
+
     suspend fun uptaItem() {
         itemsRepository.updateItem(itemUiState.toItem())
 
@@ -288,13 +375,22 @@ class ItemEntryViewModel(private val itemsRepository: ItemsRepository) : ViewMod
 
     }
 
+    suspend fun borrarItem() {
+        itemsRepository.deleteItem(itemUiState.toItem())
+
+    }
 
     suspend fun getItems() {
         itemsRepository.getAllItem()
 
     }
 
-
+    fun setFlavor(item: String) {
+        _artoUiState.update { currentState ->
+            currentState.copy(name = item)
+        }
+        //Elefe(item)
+    }
 
 
     fun updateUiStateto(id: Int, name: String) {
@@ -310,6 +406,12 @@ class ItemEntryViewModel(private val itemsRepository: ItemsRepository) : ViewMod
     }
 
 
+    fun reloj(j:String): String {
+
+        pina = j
+        return pina
+    }
+
 
 
     fun elote(){
@@ -321,6 +423,7 @@ class ItemEntryViewModel(private val itemsRepository: ItemsRepository) : ViewMod
 
 
 }
+
 
 
 

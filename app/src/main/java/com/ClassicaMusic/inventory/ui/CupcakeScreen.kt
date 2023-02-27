@@ -126,7 +126,8 @@ fun CupcakeApp(
                         navController.navigate(CupcakeScreen.Pickup.name)
                         viewModel.uiState.value.alfin
                         viewModel.uiState.value.torre
-                    }
+                    },
+                    onSelectionChanged = {viewModel.setFlavor(it)},
                 )
             }
             composable(route = CupcakeScreen.Pickup.name) {
@@ -138,7 +139,7 @@ fun CupcakeApp(
                         viewModel.uiState.value.quantity
                     navController.navigate(CupcakeScreen.Sunday.name)
                         viewModel.uiState.value.alfin
-                        viewModel.uiState.value.torre
+                        viewModel.uiState.value.flavor
                     },
                     onCancelGame = { cancelOrderAndNavigateToStart(viewModel, navController)},
                     totalTime = 151L * 1000L,
@@ -155,7 +156,7 @@ fun CupcakeApp(
                     onNextButtonClicked = {
                         navController.navigate(CupcakeScreen.Summary.name)
                         viewModel.uiState.value.alfin
-                        viewModel.uiState.value.torre
+                        viewModel.uiState.value.flavor
                     },
                     onSelectionChanged = {viewModel.setFlavor(it)},
 

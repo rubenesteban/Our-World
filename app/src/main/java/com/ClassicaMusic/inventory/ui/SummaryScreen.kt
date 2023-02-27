@@ -47,9 +47,9 @@ fun OrderSummaryScreen(
 ){
     val resources = LocalContext.current.resources
 
-    val list by viewModel.bit.collectAsState(initial = emptyList<Item>())
-    val foll by viewModel.aro.collectAsState(initial = emptyArray<String>())
-    val fill by viewModel.bat.collectAsState(initial = emptyArray<String>())
+    val list by mainviewModel.readAll.collectAsState(initial = emptyList<Item>())
+    val foll by mainviewModel.gol.collectAsState(initial = emptyArray<String>())
+    val fill by viewModel.bit.collectAsState(initial = emptyArray<String>())
 
 
 
@@ -82,7 +82,7 @@ fun OrderSummaryScreen(
         // Summary line 2: display selected flavor
         Pair(stringResource(R.string.flavor), "$bat"),
         // Summary line 3: display selected pickup date
-        Pair(stringResource(R.string.pickup_date),orderUiState.score)
+        Pair(stringResource(R.string.pickup_date), "$aro")
     )
 
     Column (

@@ -42,14 +42,11 @@ fun GameEqual(
 
 ) {
 
-     val result by mainviewModel.readAll.collectAsState(initial = emptyList())
-     //val nimte by mainviewModel.aror.collectAsState(initial = emptyList())
+    val result by mainviewModel.readAll.collectAsState(initial = emptyList())
+    var selectedValue by rememberSaveable{ mutableStateOf("")}
+    val redi by mainviewModel.gol.collectAsState(initial = emptyArray<String>())
 
-
-    var selectedValue by rememberSaveable{ mutableStateOf(""
-     )}
-   // val redi by mainviewModel.readAdd.collectAsState(initial = emptyArray<String>())
-
+    val eco = redi.toString()
 
 
     Column(
@@ -79,7 +76,7 @@ fun GameEqual(
                 list = result,
                 onCloseItem = {item -> viewModel.removae(item.name)},
                 onAddTask = {item ->viewModel.flavores(item.id, item.name)},
-                onAddItem = {item ->viewModel.flavores(item.id, item.name)}
+                onAddItem = {item ->viewModel.setFlavor( eco)}
             )
         }
     }
