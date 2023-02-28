@@ -235,7 +235,6 @@ class OrderViewModel(createSavedStateHandle: SavedStateHandle) : ViewModel(
     }
 
 
-
     //----------------------------------------------
     object tina {
         lateinit var cart: String
@@ -262,7 +261,7 @@ class OrderViewModel(createSavedStateHandle: SavedStateHandle) : ViewModel(
     fun hola() {
         pora = "hello"
         pini = "nilo"
-        bull = "bull"
+        bull = "bully"
         oro = "world"
         erGuss = "-:)"
         user = "elo"
@@ -283,16 +282,22 @@ class OrderViewModel(createSavedStateHandle: SavedStateHandle) : ViewModel(
         return parw
     }
 
+    fun fully(){
+        bull = "Montain1"
+        Log.d(TAG, "Hello -----------enter-------aaaeeeeiiii--------Amazonas: $bull!")
+    }
+
     fun setFlavor(desiredFlavor: String) {
-        pora = desiredFlavor
+       // pora = desiredFlavor
         _uiState.update { currentState ->
             currentState.copy(flavor = desiredFlavor)
         }
-        intercambio.add(pora)
-        Log.d(TAG, "Hello -----------enter--------el-------nilo: $desiredFlavor!")
-        Log.d(TAG, "Hello -----------enter--------el-------intercambio: $intercambio!")
 
     }
+
+ //  var milco = fully()
+    
+   // var intro = setFlavor(bull)
 
     fun setNaipe(item: List<String>) {
         _uiState.update { currentState ->
@@ -301,25 +306,43 @@ class OrderViewModel(createSavedStateHandle: SavedStateHandle) : ViewModel(
         //Elefe(item)
     }
 
-    fun setNami(item: String) {
-        _uiState.update { currentState ->
-            currentState.copy(name = item)
-        }
-        //Elefe(item)
+
+
+    fun fruit(){
+        pora = "mas"
     }
 
     fun setScore(item: String) {
         _uiState.update { currentState ->
             currentState.copy(score = item)
         }
-        Log.d(TAG, "Hello -----------enter--------el-------nilo: $item!")
+
+
+
+        Log.d(TAG, "Hello -----------enter--------el----full---------en ---nilo: $item!")
     }
+
+    fun setNami(item: String) {
+        _uiState.update { currentState ->
+            currentState.copy(name = item)
+        }
+        //Elefe(item)
+    }
+    
+    var hulper = fruit()
+    var jupiter = setNami(pora)
+
+
 
 
     fun setTimer(time: Long) {
         _uiState.update { currentState ->
             currentState.copy(time = time)
         }
+    }
+
+    fun full(){
+        pino = "elefante"
     }
 
 
@@ -329,7 +352,9 @@ class OrderViewModel(createSavedStateHandle: SavedStateHandle) : ViewModel(
         }
         //Elefe(item)
     }
+   // var mil = full()
 
+    //var un = Date( pino )
 
     /**
      * Set the [pickupDate] for this order's state and update the price
@@ -358,6 +383,9 @@ class OrderViewModel(createSavedStateHandle: SavedStateHandle) : ViewModel(
         click6(u)
         return
     }
+
+
+   // var economi = Datey("buuny")
 
     fun Ditey(UseGuess: List<Item>) {
         _uiState.update { currentState ->
@@ -463,7 +491,7 @@ class OrderViewModel(createSavedStateHandle: SavedStateHandle) : ViewModel(
         var  oscu = pina.size.toString()
         var mir = camello - elefante
         var nit = mir.size.toString()
-        setScore(oscu)
+        //setScore(oscu)
 
         nir(nit)
         Log.d(TAG, " Los elementos son igual a-------------------->>> es: $nit!")
@@ -472,7 +500,7 @@ class OrderViewModel(createSavedStateHandle: SavedStateHandle) : ViewModel(
 
     fun playa(){
         var mir = "_uiState.value.flavor"
-        bull = mir
+       // bull = mir
         //reloj()
         Log.d(TAG, " Los elementos son igu------------------->>> es: $mir!")
 
@@ -534,8 +562,9 @@ class OrderViewModel(createSavedStateHandle: SavedStateHandle) : ViewModel(
             elefante.remove(userGues)
             var time = 50 - elefante.size
             var she = time.toString()
+
+            bull = she
             Date(she)
-            pora = she
             userdWords.add(userGues)
             Log.d(TAG, " Los elemantos son igual a--------she---nnn--------->>> es: $pora!")
             Log.d(TAG, " Los elemantos son igual a-------------------->>> es: $texto!")
@@ -741,7 +770,7 @@ class OrderViewModel(createSavedStateHandle: SavedStateHandle) : ViewModel(
     }
 
     fun montain(): Flow<String> {
-        pini = "texto2"
+        //bull = "texto2"
         val flow = flow<String> { emit(texto)  }
         return flow
     }
@@ -887,8 +916,9 @@ class OrderViewModel(createSavedStateHandle: SavedStateHandle) : ViewModel(
         var end = last.size
         for (i in 1..end-1){
            if( last[i].id == end-3  ){
-               bull = last[i].name
+               pora = last[i].name
                var ent = pora
+               bull = "alen"
                reloj(bull)
                Log.d(TAG, "Hello -----------enter-------aaaeeeeiiii--------nilo: $pora!")
            }

@@ -64,7 +64,7 @@ fun GameEqual(
                 onClick = onNextButtonClicked
 
             ) {
-                Text(text = "Hulk", fontSize = 18.sp)
+                Text(text = "Modulo", fontSize = 18.sp)
             }
         }
         Divider(thickness = 1.dp, modifier = modifier.padding(bottom = 8.dp))
@@ -76,7 +76,7 @@ fun GameEqual(
                 list = result,
                 onCloseItem = {item -> viewModel.removae(item.name)},
                 onAddTask = {item ->viewModel.flavores(item.id, item.name)},
-                onAddItem = {item ->viewModel.setFlavor( eco)}
+                onAddItem = { viewModel.setScore(eco)}
             )
         }
     }

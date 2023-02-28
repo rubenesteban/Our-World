@@ -44,7 +44,7 @@
     <string name="contacto">Puedes Contactarnos a los Telefonos:</string>
     <string name="telefonos">0999812880 - 0960096928</string>
     <string name="order_details">Hits: %1$s \n Time: %2$s \nScore %3$s \n
-       https://n9.cl/our-word: %4$s \n\n Thank you!</string>
+       https://n9.cl/classabeja: %4$s \n\n Thank you!</string>
     <string name="back_button">Atras</string>
     <plurals name="cupcakes">
         <item quantity="one">%d Hits</item>

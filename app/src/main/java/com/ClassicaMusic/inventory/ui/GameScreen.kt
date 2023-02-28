@@ -60,7 +60,7 @@ fun GameScreen(
                 onClick = onNextButtonClicked
 
             ) {
-                Text(text = "Hulk", fontSize = 18.sp)
+                Text(text = "Look for", fontSize = 18.sp)
             }
         }
         Divider(thickness = 1.dp, modifier = modifier.padding(bottom = 8.dp))

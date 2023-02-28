@@ -22,12 +22,12 @@ fun WellTaskList(
     list: List<Item>,
     onCloseItem: (Item) -> Unit,
     onAddTask: (Item) -> Unit,
-    onAddItem: (Item) -> Unit,
+    onAddItem: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     LazyRow(modifier = Modifier) {
         items(items = list, key = { item -> item.name })
-        { item ->  WellQouItem( item.name, onClose = {onCloseItem(item)} ,onAdd = {onAddTask(item)}, onOur = {onAddTask(item) }
+        { item ->  WellQouItem( item.name, onClose = {onCloseItem(item)} ,onAdd = {onAddTask(item)}, onOur = {onAddItem() }
             ) }
     }
 }

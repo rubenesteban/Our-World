@@ -69,10 +69,11 @@ class ItemEntryViewModel(private val itemsRepository: ItemsRepository) : ViewMod
     lateinit var pina: String
     lateinit var hulk: String
     lateinit var hilk: String
+    lateinit var bull: String
    // ----------------------------------
 
 
-    val texto : String by lazy { reloj(pina) }
+    val texto : String by lazy { reloj(bull) }
     val telo : String by lazy { ecua(hilk) }
     val exit : MutableSet<String> by lazy { nilo()}
     val essit : MutableSet<Int> by lazy { amazo()}
@@ -137,6 +138,7 @@ class ItemEntryViewModel(private val itemsRepository: ItemsRepository) : ViewMod
         var mit = World.size
         for (i in 0..z-1){
             if(Worlds[i].name == pina){
+                //chucki(i,pina)
                 Pala.add(pina)
                 nilo()
                 Palabra.add(i)
@@ -162,8 +164,8 @@ class ItemEntryViewModel(private val itemsRepository: ItemsRepository) : ViewMod
 
             val pi = 151000 - l
             val time = pi.toString()
-            pina = time
-            reloj(pina)
+            bull = time
+            reloj(bull)
 
             Log.d(TAG, "Hello -----------en--------------medida 0: $pi !")
             Log.d(TAG, "Hello -----------en--------------medida 0: $pi !")
@@ -214,7 +216,7 @@ class ItemEntryViewModel(private val itemsRepository: ItemsRepository) : ViewMod
         updateUiStateto(i, n)
         borrarItem()
     }
-    fun chucki(i:Int, n:String) {
+    fun zanahoria(i:Int, n:String) {
         viewModelScope.launch {
             BorrarBD(i, n)
 
@@ -309,6 +311,7 @@ class ItemEntryViewModel(private val itemsRepository: ItemsRepository) : ViewMod
         pina = "hulk"
         hulk = "ok"
         hilk = "elo"
+        bull = "miel"
     }
 
 
@@ -407,9 +410,8 @@ class ItemEntryViewModel(private val itemsRepository: ItemsRepository) : ViewMod
 
 
     fun reloj(j:String): String {
-
-        pina = j
-        return pina
+        bull = j
+        return bull
     }
 
 
