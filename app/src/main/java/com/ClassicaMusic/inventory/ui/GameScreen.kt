@@ -60,7 +60,7 @@ fun GameScreen(
                 onClick = onNextButtonClicked
 
             ) {
-                Text(text = "Look for", fontSize = 18.sp)
+                Text(text = "Look For", fontSize = 18.sp)
             }
         }
         Divider(thickness = 1.dp, modifier = modifier.padding(bottom = 8.dp))
@@ -72,7 +72,7 @@ fun GameScreen(
                 list = viewModel.tasks,
                 onCloseTask = { tasks -> viewModel.remove(tasks, orderUiState.quantity) },
                 onAlfinTask = { tasks -> mainviewModel.chickMito( tasks.key, orderUiState.quantity)},
-                onAddTask = { viewModel.dulf(orderUiState.alfin) })
+                onAddTask = { viewModel.supremo(orderUiState.quantity) })
         }
     }
 }

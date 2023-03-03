@@ -22,6 +22,8 @@ fun WellnesWrapList(
     list: List<Ask>,
     onCloseTask:(Ask) -> Unit,
     onAddTask: (Ask) -> Unit,
+    onOddTask: (Ask) -> Unit,
+
     onAlfinTask: () -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -31,7 +33,9 @@ fun WellnesWrapList(
             WellnessWrapItem(wrap.drawable,
                 onClose = { onCloseTask(wrap) },
                 onGuess = { onAlfinTask() },
-                onAdd = { onAddTask(wrap)})
+                onAdd = { onAddTask(wrap)},
+                onOdd = { onOddTask(wrap)}
+                )
         }
     }
 }
@@ -41,6 +45,9 @@ fun WellnessWrapItem(
     drawable:Int,
     onClose: () -> Unit,
     onAdd: () -> Unit,
+
+    onOdd: () -> Unit,
+
     onGuess: () -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -52,6 +59,7 @@ fun WellnessWrapItem(
             .clickable {
                 onClose()
                 onAdd()
+                onOdd ()
                 onGuess()
             },
         elevation = 10.dp)

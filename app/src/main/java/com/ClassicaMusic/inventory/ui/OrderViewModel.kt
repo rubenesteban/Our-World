@@ -4,6 +4,7 @@ package com.ClassicaMusic.inventory.ui
 //import kotlinx.coroutines.flow.internal.NopCollector.emit
 //import kotlinx.coroutines.flow.internal.NopCollector.emit
 
+import android.content.Context
 import android.util.Log
 import androidx.compose.runtime.*
 import androidx.compose.runtime.snapshots.SnapshotStateList
@@ -12,6 +13,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ClassicaMusic.inventory.data.Item
 import com.ClassicaMusic.inventory.data.OrderUiState
+import com.ClassicaMusic.inventory.datastore.StoreUserEmail
 import com.ClassicaMusic.inventory.ui.OrderViewModel.garci.oclose
 import com.ClassicaMusic.inventory.ui.OrderViewModel.julian.libre
 import com.ClassicaMusic.inventory.ui.OrderViewModel.pegatina.tigre
@@ -52,14 +54,14 @@ class OrderViewModel(createSavedStateHandle: SavedStateHandle) : ViewModel(
 
 
 
+
     //--------------------------
     private val _tasks = libre.toMutableStateList()
     val tasks: List<Affirmation>
         get() = _tasks
 
     //-----------------------------
-    private var
-            Work: MutableSet<String> = mutableSetOf<String>("")
+    private var Work: MutableSet<String> = mutableSetOf<String>("")
     private var Oficio: MutableSet<String> = mutableSetOf<String>("")
     private var Trabajo: MutableSet<String> = mutableSetOf<String>("")
     private var k: Int = 0
@@ -86,6 +88,10 @@ class OrderViewModel(createSavedStateHandle: SavedStateHandle) : ViewModel(
     lateinit var pori: String
     lateinit var pini: String
     lateinit var bull: String
+    lateinit var bill: String
+    lateinit var nill: String
+    lateinit var boll: String
+    lateinit var noll: String
     var pi by Delegates.notNull<Int>()
 
 
@@ -110,6 +116,11 @@ class OrderViewModel(createSavedStateHandle: SavedStateHandle) : ViewModel(
 
     // __________________________________________________
     var EnPalabras by mutableStateOf("")
+        private set
+
+    //---------------------------
+    // __________________________________________________
+    var EnMiradas by mutableStateOf("")
         private set
 
     //---------------------------
@@ -151,12 +162,14 @@ class OrderViewModel(createSavedStateHandle: SavedStateHandle) : ViewModel(
     private val _wrap = oclose.toMutableStateList()
     val wrap: List<Ask>
         get() = _wrap
+
     //---------------------------------------------
-    val texto: String by lazy { reloj(bull)}
+    val texto: String by lazy { reloj(ocho)}
     ///-------------------------------------------
 
-    fun morta(){
-
+    fun morta(j:String): String {
+        pora = "hello"
+        return pora
     }
     val parw: List<Ask> = listOf()
 
@@ -273,10 +286,14 @@ class OrderViewModel(createSavedStateHandle: SavedStateHandle) : ViewModel(
         pera = listOf("a", "b", "c", "d")
         pico = 1
         pi = 0
+        nill = "enter"
+        bill = "noone"
+        noll = "list"
+        boll = "mico"
 
     }
 
-
+   // var tran = eque()
     fun modmar(): List<Ask> {
         val parw = wrap.reversed()
         return parw
@@ -285,6 +302,7 @@ class OrderViewModel(createSavedStateHandle: SavedStateHandle) : ViewModel(
     fun fully(){
         bull = "Montain1"
         Log.d(TAG, "Hello -----------enter-------aaaeeeeiiii--------Amazonas: $bull!")
+
     }
 
     fun setFlavor(desiredFlavor: String) {
@@ -306,33 +324,55 @@ class OrderViewModel(createSavedStateHandle: SavedStateHandle) : ViewModel(
         //Elefe(item)
     }
 
-
-
-    fun fruit(){
-        pora = "mas"
+    fun lomo(): String {
+        pora = texto
+        pora = bill
+        pora = "list"
+        Log.d(TAG, "Hello -----------enter-------aaaeeeeiiii--------Amazonas: $pora !")
+        return pora
     }
+
+
+
+    var elocuente = "tito"
+    var en = updatePalabras(elocuente)
+
+
+
+    fun miercoles(){
+        Log.d(TAG, "Hello -----------enter--------el----full---------en ---nilo: $texto!")
+
+    }
+
+    //var trint = miercoles()
+
+
 
     fun setScore(item: String) {
         _uiState.update { currentState ->
             currentState.copy(score = item)
         }
 
+        bull = item
 
+        var mir = texto
+        Log.d(TAG, " Los elementos son igu------------------->>> es: $mir!")
 
-        Log.d(TAG, "Hello -----------enter--------el----full---------en ---nilo: $item!")
+        Log.d(TAG, "Hello -----------enter--------el----full---------en ---nilo: $mir!")
     }
+
+
 
     fun setNami(item: String) {
         _uiState.update { currentState ->
             currentState.copy(name = item)
         }
-        //Elefe(item)
+     // Log.d(TAG, "Hello -----------enter--------el----full-----mas----en ---setNami $item!")
+
     }
-    
-    var hulper = fruit()
-    var jupiter = setNami(pora)
 
-
+    var eco = ScoreU()
+    var name = setNami (pora)
 
 
     fun setTimer(time: Long) {
@@ -456,11 +496,17 @@ class OrderViewModel(createSavedStateHandle: SavedStateHandle) : ViewModel(
     }
 
     fun remove(item: Affirmation, User: Int) {
+        pora = "ecole"
         if (f <= User) {
             _tasks.remove(item)
             f += 1
+            var en = item.key
+            pora = en
+
+           // var eni = en.toString()
             green(f)
         }
+
 
     }
 
@@ -499,11 +545,6 @@ class OrderViewModel(createSavedStateHandle: SavedStateHandle) : ViewModel(
     }
 
     fun playa(){
-        var mir = "_uiState.value.flavor"
-       // bull = mir
-        //reloj()
-        Log.d(TAG, " Los elementos son igu------------------->>> es: $mir!")
-
     }
     var lisme = playa()
 
@@ -552,11 +593,18 @@ class OrderViewModel(createSavedStateHandle: SavedStateHandle) : ViewModel(
     }
 
 
-    fun PalabrasUsa(guessdWord: String, mas: Int, l: Long ) {
+    fun PalabrasUsa(guessdWord: String, mas: Int, l: Long, result: List<Item>) {
         userGues = guessdWord
+        setNami(bill)
+        Ditey(result)
+        electro()
         var mil = userdWords
         var ecu = _uiState.value.alfin
         setTimer(l)
+        var nil = 151000- l
+        var nix = nil.toString()
+        pora = nix
+        reloj(nix)
         Log.d(TAG, " Los elemantos son igual a-------------------->>> es: $l!")
         if (elefante.contains(userGues) && ecu.contains(userGues) ) {
             elefante.remove(userGues)
@@ -617,7 +665,7 @@ class OrderViewModel(createSavedStateHandle: SavedStateHandle) : ViewModel(
 
             Date(miel)
             setFlavor(miel)
-            setNami(miel)
+           // setNami(miel)
             pora = miel
 
             taskUiState.key  = miel
@@ -656,11 +704,23 @@ class OrderViewModel(createSavedStateHandle: SavedStateHandle) : ViewModel(
 
     }
 
+    fun updatePalabras(j:String){
+        boll = j
+        EnPalabras = boll
+    }
+
+    fun updateMira(j:String){
+        boll = j
+        EnMiradas  = boll
+    }
+
     fun checkMito() {
         viewModelScope.launch {
-            scull()
+           /// dataStore.incrementCounter()
         }
     }
+
+    var intro = checkMito()
 
 
     fun Pickat(userGues: String): MutableSet<String> {
@@ -696,11 +756,30 @@ class OrderViewModel(createSavedStateHandle: SavedStateHandle) : ViewModel(
     }
 
     var nir = reloji()
+
+
     fun reloj(h:String): String {
         bull = h
+        //bull = tringre(pora)
         return bull
     }
 
+
+
+    fun tringre(j:String): String {
+        pora = j
+        pora = "eli"
+        return pora
+    }
+
+
+
+    fun leon(): String {
+       // pora = "mima"
+        return pora
+    }
+
+    var ocho = leon()
 
     suspend fun scull(): Int {
        // val pico = mitin(_uiState.value.quantity)
@@ -775,13 +854,13 @@ class OrderViewModel(createSavedStateHandle: SavedStateHandle) : ViewModel(
         return flow
     }
 
-    var tren = eque()
+    //var trin = eque()
 
     val gol : Flow<String> = tatdio(_uiState.value.score)
 
     val bit : Flow<String> = montain()
     val aro : Flow<String> = tupdio(tiempo())
-    val bat : Flow<String> = tapdio(scoro())
+    val bat : Flow<String> = tardio()
 
 
 
@@ -836,7 +915,7 @@ class OrderViewModel(createSavedStateHandle: SavedStateHandle) : ViewModel(
     fun examen(){
         var enc = _aumento.value
         var ent = enc.toString()
-       // reloj(ent)
+
         Log.d(TAG, " Este es el valor de aumento------>>> es: $enc!")
     }
 
@@ -903,6 +982,12 @@ class OrderViewModel(createSavedStateHandle: SavedStateHandle) : ViewModel(
         Log.d(TAG, "Hello -----------enter---------------nilo: $toque!")
     }
 
+    fun supremo(item: Int) {
+        val toque = item.toString()
+        Log.d(TAG, "Hello -----------enter---------------nilo: $toque!")
+        setNami(toque)
+    }
+
     fun maxi(item: List<Item>): List<Item> {
         var min = listare(item)
         setNaipe(min)
@@ -911,29 +996,52 @@ class OrderViewModel(createSavedStateHandle: SavedStateHandle) : ViewModel(
         //Log.d(TAG, "Hello -----------enter---------------nilo: $min!")
         return item
     }
+
+
     fun electro() {
         var last = _uiState.value.torre
         var end = last.size
         for (i in 1..end-1){
            if( last[i].id == end-3  ){
                pora = last[i].name
+
                var ent = pora
-               bull = "alen"
-               reloj(bull)
+               boll = pora
+               bull = pora
+               pora = "love"
+               //reloj(pora)
+               leon()
+               tringre(pora)
+               lomo()
+               updateMira(bull)
+               //var nint = texto
                Log.d(TAG, "Hello -----------enter-------aaaeeeeiiii--------nilo: $pora!")
+               Log.d(TAG, "Hello -----------enter-------aaaeeeeiiiioooo--------nilo: $texto!")
+
+
+
            }
         }
     }
 
-    fun eque(): String {
-        var you = _uiState.value.score
+    fun ScoreU(): String {
+        val numbers = mutableListOf<Int>(5,1,2,3,4,5,6,7,8,9,10)
+        var bien = numbers.randomOrNull()
+        var rubi = bien?.plus(49)
 
-        Log.d(TAG, "Hello -----------enter--------score-------nilo: $you!")
-        Log.d(TAG, "Hello -----------enter-------iiiScore--------nilo: $userMilk!")
-        return you
+        pora = rubi.toString()
+        return pora
     }
 
-    var inf = eque()
+    fun eque(j:String): String {
+       // bull = morta()
+        bull = j
+        bull = morta(pora)
+        Log.d(TAG, "Hello -----------enter--------score-------nilo: $bull!")
+        Log.d(TAG, "Hello -----------enter-------iiiScore--------nilo: $EnMiradas!")
+        return bull
+    }
+
 
     fun updateUserMilk(use:String){
         userMilk = use

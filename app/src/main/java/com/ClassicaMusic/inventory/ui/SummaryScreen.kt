@@ -11,9 +11,8 @@ import androidx.compose.material.Button
 import androidx.compose.material.Divider
 import androidx.compose.material.OutlinedButton
 import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
+import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -25,9 +24,11 @@ import com.ClassicaMusic.inventory.data.Item
 import com.ClassicaMusic.inventory.ui.components.FormattedPriceLabel
 
 import com.ClassicaMusic.inventory.data.OrderUiState
+import com.ClassicaMusic.inventory.datastore.StoreUserEmail
 
 import com.example.inventory.R
 import com.example.inventory.ui.item.ItemEntryViewModel
+import kotlinx.coroutines.launch
 
 
 /**
@@ -51,15 +52,16 @@ fun OrderSummaryScreen(
     val foll by mainviewModel.gol.collectAsState(initial = emptyArray<String>())
     val fill by viewModel.bit.collectAsState(initial = emptyArray<String>())
 
+    val bat = foll
+    val aro = fill
+    val context = LocalContext.current
+    val scope = rememberCoroutineScope()
+    val dataStore = StoreUserEmail(context)
+    val savedEmail = dataStore.getEmail.collectAsState(initial = "")
 
+    var email by remember { mutableStateOf("") }
 
-
-    val aro = foll
-
-    val bat = fill
-
-
-
+    email = orderUiState.name
     val numberOfCupcakes = resources.getQuantityString(
         R.plurals.cupcakes,
         orderUiState.quantity,
@@ -80,9 +82,9 @@ fun OrderSummaryScreen(
         // Summary line 1: display selected quantity
         Pair(stringResource(R.string.quantity), numberOfCupcakes),
         // Summary line 2: display selected flavor
-        Pair(stringResource(R.string.flavor), orderUiState.flavor),
+        Pair(stringResource(R.string.flavor), "$aro"),
         // Summary line 3: display selected pickup date
-        Pair(stringResource(R.string.pickup_date), orderUiState.date)
+        Pair(stringResource(R.string.pickup_date), savedEmail.value!!)
     )
 
     Column (
@@ -99,6 +101,12 @@ fun OrderSummaryScreen(
             subtotal = orderUiState.name,
             modifier = Modifier.align(Alignment.End)
         )
+        Button(
+            modifier = Modifier.fillMaxWidth(),
+            onClick = { scope.launch { dataStore.saveEmail(email) }  }
+        ) {
+            Text(stringResource(R.string.send))
+        }
         Button(
             modifier = Modifier.fillMaxWidth(),
             onClick = { onSendButtonClicked(newOrder, orderSummary) }

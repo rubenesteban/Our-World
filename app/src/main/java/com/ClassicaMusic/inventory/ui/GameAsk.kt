@@ -8,14 +8,17 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 
 import com.ClassicaMusic.inventory.data.OrderUiState
+import com.ClassicaMusic.inventory.datastore.StoreUserEmail
 import com.example.inventory.ui.item.ItemEntryViewModel
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 
 @ExperimentalFoundationApi
@@ -35,7 +38,6 @@ fun GameAsk(
 
    val result by mainviewModel.readAll.collectAsState(initial = emptyList())
    //  val resulta by mainviewModel.readAdd.collectAsState(initial = emptyList())
-
 
     var value by remember {
         mutableStateOf(initialValue)
@@ -94,12 +96,17 @@ fun GameAsk(
                 list = viewModel.wrap,
                 onCloseTask = { wrap -> viewModel.remove(wrap,orderUiState.quantity)},
                 onAddTask = { wrap -> mainviewModel.PalabrasUsa(wrap.key,orderUiState.quantity, currentTime, result) },
-                onAlfinTask = {  viewModel.maxi(result)})
+                onOddTask = {wrap -> viewModel.PalabrasUsa(wrap.key,orderUiState.quantity, currentTime, result) },
+
+                onAlfinTask = {viewModel.maxi(result)})
+
             WellnesWrapList(
                 list = viewModel.modmar(),
                 onCloseTask = { wrap -> viewModel.remove(wrap,orderUiState.quantity)},
                 onAddTask = {wrap -> mainviewModel.PalabrasUsa(wrap.key,orderUiState.quantity, currentTime, result) },
-                onAlfinTask = {  viewModel.maxi(result)})
+                onOddTask = {wrap -> viewModel.PalabrasUsa(wrap.key,orderUiState.quantity, currentTime, result) },
+
+                onAlfinTask = {viewModel.maxi(result)})
 
         }
     }

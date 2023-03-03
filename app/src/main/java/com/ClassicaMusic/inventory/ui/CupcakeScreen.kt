@@ -16,6 +16,7 @@ import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
@@ -26,12 +27,11 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.ClassicaMusic.inventory.data.OrderUiState
-
-
-
 import com.example.inventory.R
 import com.ClassicaMusic.inventory.data.DataSource.quantityOptions
+import com.ClassicaMusic.inventory.datastore.StoreUserEmail
 import com.example.inventory.ui.item.ItemEntryViewModel
+import kotlinx.coroutines.launch
 
 
 /**
@@ -99,6 +99,11 @@ fun CupcakeApp(
     ) { innerPadding ->
         val uiState by viewModel.uiState.collectAsState()
         //val HulkUiState by mainviewModel.artoUiState.collectAsState()
+       // val context = LocalContext.current
+        // scope
+      //  val scope = rememberCoroutineScope()
+        // datastore Email
+      //  val dataStore = StoreUserEmail(context)
 
 
         NavHost(
@@ -138,8 +143,7 @@ fun CupcakeApp(
                     onNextButtonClicked = {
                         viewModel.uiState.value.quantity
                     navController.navigate(CupcakeScreen.Sunday.name)
-                        viewModel.uiState.value.alfin
-                        viewModel.uiState.value.flavor
+
                     },
                     onCancelGame = { cancelOrderAndNavigateToStart(viewModel, navController)},
                     totalTime = 151L * 1000L,
@@ -155,10 +159,9 @@ fun CupcakeApp(
 
                     onNextButtonClicked = {
                         navController.navigate(CupcakeScreen.Summary.name)
-                        viewModel.uiState.value.alfin
-                        viewModel.uiState.value.flavor
+
                     },
-                    onSelectionChanged = {viewModel.setFlavor(it)},
+                    onSelectionChanged = {viewModel.setNami(it)},
 
                 )
             }

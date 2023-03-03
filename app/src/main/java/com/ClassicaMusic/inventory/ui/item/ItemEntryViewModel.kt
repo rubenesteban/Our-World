@@ -187,7 +187,7 @@ class ItemEntryViewModel(private val itemsRepository: ItemsRepository) : ViewMod
 
     fun montain(): Flow<String> {
         val uno = "texto"
-        val flow = flow<String> { emit(uno)  }
+        val flow = flow<String> { emit("uno")  }
         return flow
     }
 

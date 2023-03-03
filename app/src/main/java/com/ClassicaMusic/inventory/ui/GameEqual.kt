@@ -10,12 +10,14 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.ClassicaMusic.inventory.data.Item
 
 import com.ClassicaMusic.inventory.data.OrderUiState
+import com.ClassicaMusic.inventory.datastore.StoreUserEmail
 
 import com.example.inventory.ui.item.ItemEntryViewModel
 
@@ -47,6 +49,9 @@ fun GameEqual(
     val redi by mainviewModel.gol.collectAsState(initial = emptyArray<String>())
 
     val eco = redi.toString()
+    selectedValue = eco
+
+
 
 
     Column(
@@ -64,7 +69,7 @@ fun GameEqual(
                 onClick = onNextButtonClicked
 
             ) {
-                Text(text = "Modulo", fontSize = 18.sp)
+                Text(text = "Module", fontSize = 18.sp)
             }
         }
         Divider(thickness = 1.dp, modifier = modifier.padding(bottom = 8.dp))
@@ -76,7 +81,7 @@ fun GameEqual(
                 list = result,
                 onCloseItem = {item -> viewModel.removae(item.name)},
                 onAddTask = {item ->viewModel.flavores(item.id, item.name)},
-                onAddItem = { viewModel.setScore(eco)}
+                onAddItem = { viewModel.setNami(eco)}
             )
         }
     }
