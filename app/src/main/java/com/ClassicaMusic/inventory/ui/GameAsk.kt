@@ -6,19 +6,17 @@ import androidx.compose.material.Button
 import androidx.compose.material.TabRowDefaults
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 
 import com.ClassicaMusic.inventory.data.OrderUiState
-import com.ClassicaMusic.inventory.datastore.StoreUserEmail
 import com.example.inventory.ui.item.ItemEntryViewModel
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 
 
 @ExperimentalFoundationApi
@@ -28,16 +26,24 @@ fun GameAsk(
     orderUiState: OrderUiState,
     elfin:List<String>,
     viewModel: OrderViewModel = viewModel(),
-    onNextButtonClicked: () -> Unit = {},
+    onNextButtonClicked:(String) -> Unit ,
+    onSelectionChanged:(String) -> Unit ={},
     initialValue: Float = 1f,
     totalTime: Long,
     onCancelGame:() -> Unit = {},
-    mainviewModel: ItemEntryViewModel = viewModel(factory = AppViewModelProvider.Factory)
+    mainviewModel: ItemEntryViewModel = viewModel(factory = AppViewModelProvider.Factory),
+    equalviewModel: EcualViewModel = viewModel()
 
-    ) {
+) {
 
    val result by mainviewModel.readAll.collectAsState(initial = emptyList())
-   //  val resulta by mainviewModel.readAdd.collectAsState(initial = emptyList())
+   val resulta by mainviewModel.primo.collectAsState(initial = emptyList<Item?>())
+    var selectedValue by rememberSaveable{ mutableStateOf("")}
+
+    val red by viewModel.go.collectAsState(initial = emptyArray<String>())
+
+    val eko = red.toString()
+    selectedValue = eko
 
     var value by remember {
         mutableStateOf(initialValue)
@@ -67,7 +73,7 @@ fun GameAsk(
                     .width(151.dp)
                     .height(70.dp)
                     .padding(start = 8.dp),
-                onClick = onNextButtonClicked
+                onClick = {onNextButtonClicked(eko)}
 
             ) {
                 Text(text = "Find", fontSize = 18.sp)
@@ -98,7 +104,7 @@ fun GameAsk(
                 onAddTask = { wrap -> mainviewModel.PalabrasUsa(wrap.key,orderUiState.quantity, currentTime, result) },
                 onOddTask = {wrap -> viewModel.PalabrasUsa(wrap.key,orderUiState.quantity, currentTime, result) },
 
-                onAlfinTask = {viewModel.maxi(result)})
+                onAlfinTask = {viewModel.theckList(result )})
 
             WellnesWrapList(
                 list = viewModel.modmar(),
@@ -106,7 +112,7 @@ fun GameAsk(
                 onAddTask = {wrap -> mainviewModel.PalabrasUsa(wrap.key,orderUiState.quantity, currentTime, result) },
                 onOddTask = {wrap -> viewModel.PalabrasUsa(wrap.key,orderUiState.quantity, currentTime, result) },
 
-                onAlfinTask = {viewModel.maxi(result)})
+                onAlfinTask = {viewModel.theckList(result)})
 
         }
     }

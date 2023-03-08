@@ -82,7 +82,7 @@ fun OrderSummaryScreen(
         // Summary line 1: display selected quantity
         Pair(stringResource(R.string.quantity), numberOfCupcakes),
         // Summary line 2: display selected flavor
-        Pair(stringResource(R.string.flavor), "$aro"),
+        Pair(stringResource(R.string.flavor), orderUiState.score),
         // Summary line 3: display selected pickup date
         Pair(stringResource(R.string.pickup_date), savedEmail.value!!)
     )
@@ -98,7 +98,7 @@ fun OrderSummaryScreen(
         }
         Spacer(modifier = Modifier.height(8.dp))
         FormattedPriceLabel(
-            subtotal = orderUiState.name,
+            subtotal = orderUiState.flavor,
             modifier = Modifier.align(Alignment.End)
         )
         Button(

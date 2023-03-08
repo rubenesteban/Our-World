@@ -1,5 +1,8 @@
 package com.ClassicaMusic.inventory.data
 
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flowOf
+
 /**
  * Data class that represents the current UI state in terms of [quantity], [flavor],
  * [dateOptions], selected pickup [date] and [price]
@@ -26,6 +29,8 @@ data class OrderUiState(
     val alfin: List<String> = listOf(),
 
     val torre: List<Item> = listOf(),
+
+    val caballo: Flow<String> = flowOf(),
 
     val id: Int = 0,
     val name: String = ""

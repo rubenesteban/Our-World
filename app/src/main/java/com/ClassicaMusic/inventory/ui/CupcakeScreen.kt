@@ -98,14 +98,6 @@ fun CupcakeApp(
         }
     ) { innerPadding ->
         val uiState by viewModel.uiState.collectAsState()
-        //val HulkUiState by mainviewModel.artoUiState.collectAsState()
-       // val context = LocalContext.current
-        // scope
-      //  val scope = rememberCoroutineScope()
-        // datastore Email
-      //  val dataStore = StoreUserEmail(context)
-
-
         NavHost(
             navController = navController,
             startDestination = CupcakeScreen.Start.name,
@@ -143,8 +135,10 @@ fun CupcakeApp(
                     onNextButtonClicked = {
                         viewModel.uiState.value.quantity
                     navController.navigate(CupcakeScreen.Sunday.name)
+                        viewModel.setFlavor(it)
 
                     },
+                    onSelectionChanged = {viewModel.setFlavor(it)},
                     onCancelGame = { cancelOrderAndNavigateToStart(viewModel, navController)},
                     totalTime = 151L * 1000L,
                 )
@@ -159,9 +153,10 @@ fun CupcakeApp(
 
                     onNextButtonClicked = {
                         navController.navigate(CupcakeScreen.Summary.name)
+                        viewModel.setScore(it)
 
                     },
-                    onSelectionChanged = {viewModel.setNami(it)},
+                    onSelectionChanged = {viewModel.setScore(it)},
 
                 )
             }

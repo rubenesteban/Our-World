@@ -29,6 +29,11 @@ object AppViewModelProvider {
         }
 
 
+        initializer {
+            EcualViewModel(this.createSavedStateHandle())
+        }
+
+
     }
 }
 

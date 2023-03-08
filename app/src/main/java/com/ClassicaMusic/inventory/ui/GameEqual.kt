@@ -37,19 +37,26 @@ fun GameEqual(
     orderUiState: OrderUiState,
     //hulkUiState:HulkUiState,
     modifier: Modifier = Modifier,
-    onNextButtonClicked:() -> Unit ={},
+    onNextButtonClicked:(String) -> Unit ,
     onSelectionChanged:(String) -> Unit ={},
     viewModel: OrderViewModel = viewModel(),
-    mainviewModel: ItemEntryViewModel = viewModel(factory = AppViewModelProvider.Factory)
+    mainviewModel: ItemEntryViewModel = viewModel(factory = AppViewModelProvider.Factory),
+    equalviewModel: EcualViewModel = viewModel()
+
 
 ) {
 
     val result by mainviewModel.readAll.collectAsState(initial = emptyList())
     var selectedValue by rememberSaveable{ mutableStateOf("")}
+    var tedValue by rememberSaveable{ mutableStateOf("")}
     val redi by mainviewModel.gol.collectAsState(initial = emptyArray<String>())
+    val red by viewModel.go.collectAsState(initial = emptyArray<String>())
 
     val eco = redi.toString()
-    selectedValue = eco
+    tedValue = eco
+
+    val eko = red.toString()
+    selectedValue = eko
 
 
 
@@ -66,7 +73,7 @@ fun GameEqual(
                     .width(303.dp)
                     .height(70.dp)
                     .padding(start = 33.dp),
-                onClick = onNextButtonClicked
+                onClick = {onNextButtonClicked(eko)}
 
             ) {
                 Text(text = "Module", fontSize = 18.sp)
@@ -80,8 +87,9 @@ fun GameEqual(
             WellTaskList(
                 list = result,
                 onCloseItem = {item -> viewModel.removae(item.name)},
-                onAddTask = {item ->viewModel.flavores(item.id, item.name)},
-                onAddItem = { viewModel.setNami(eco)}
+                onAddTask = {item ->viewModel.Plavores(item.id, item.name)},
+                onAddItem = { viewModel.flavores(eco, eko)},
+                onOddItem = { viewModel.setScore(eko)}
             )
         }
     }

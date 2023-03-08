@@ -18,21 +18,16 @@ package com.example.inventory.ui.item
 
 import android.util.Log
 import androidx.compose.runtime.*
-import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.ClassicaMusic.inventory.data.Item
 import com.ClassicaMusic.inventory.data.ItemsRepository
 import com.ClassicaMusic.inventory.data.OrderUiState
-import com.ClassicaMusic.inventory.ui.Ask
-import com.ClassicaMusic.inventory.ui.OrderViewModel
 import com.example.inventory.ui.item.ItemEntryViewModel.king.piramide
 import com.example.inventory.ui.item.ItemEntryViewModel.kingWork.sol
 
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
-import java.time.temporal.ValueRange
 import java.util.*
 
 /**
@@ -66,6 +61,8 @@ class ItemEntryViewModel(private val itemsRepository: ItemsRepository) : ViewMod
     private var World: MutableSet<String> = mutableSetOf()
     private var Worlds: List<Item> = listOf()
     private var Wolf: List<String> = listOf()
+    private var Wolfi: Flow<String> = flowOf()
+    private var Wolfy: Flow<Item?> = flowOf()
     lateinit var pina: String
     lateinit var hulk: String
     lateinit var hilk: String
@@ -73,11 +70,13 @@ class ItemEntryViewModel(private val itemsRepository: ItemsRepository) : ViewMod
    // ----------------------------------
 
 
-    val texto : String by lazy { reloj(bull) }
-    val telo : String by lazy { ecua(hilk) }
+    val texto : String by lazy { reloj(agua) }
+    //val telo : String by lazy { i }
     val exit : MutableSet<String> by lazy { nilo()}
     val essit : MutableSet<Int> by lazy { amazo()}
-
+    val inpar : Flow<String> by lazy { primor()}
+    val primo : Flow<Item?> by lazy { remolacha(5) }
+    val agua : String by lazy { red() }
     // ----------------------------------
 
     private var k: Int = 0
@@ -141,6 +140,12 @@ class ItemEntryViewModel(private val itemsRepository: ItemsRepository) : ViewMod
                 //chucki(i,pina)
                 Pala.add(pina)
                 nilo()
+                var mill = Pala.size.toString()
+                bull = mill
+                red()
+                reloj(mill)
+                updateUiSteto(mill)
+                setFlavor(texto)
                 Palabra.add(i)
                 amazo()
                 h+=1
@@ -148,7 +153,7 @@ class ItemEntryViewModel(private val itemsRepository: ItemsRepository) : ViewMod
                     mir(h)
                     sir(h)
                     var nil = h.toString()
-
+                   // ecuador()
                     ecua(nil)
                     Log.d(TAG, "Hello -----------en--------------medida 0: $h !")
                 }
@@ -160,14 +165,14 @@ class ItemEntryViewModel(private val itemsRepository: ItemsRepository) : ViewMod
         if (mit >= mas-1) {
             mir(8)
             Log.d(TAG, "Hello -----------en--------------medida 0: $mit!")
-
+            libro()
 
             val pi = 151000 - l
             val time = pi.toString()
-            bull = time
-            reloj(bull)
+           // bull = time
+            //reloj()
 
-            Log.d(TAG, "Hello -----------en--------------medida 0: $pi !")
+            Log.d(TAG, "Hello -----------en----------jjjjjjjjjjjj----medida 0: $texto !")
             Log.d(TAG, "Hello -----------en--------------medida 0: $pi !")
 
         }
@@ -175,7 +180,7 @@ class ItemEntryViewModel(private val itemsRepository: ItemsRepository) : ViewMod
 
     fun subir (){
         chocko(10, texto)
-        chocko(11, telo)
+       // chocko(11, telo)
     }
     fun nilo(): MutableSet<String> {
         return Pala
@@ -186,19 +191,62 @@ class ItemEntryViewModel(private val itemsRepository: ItemsRepository) : ViewMod
 
 
     fun montain(): Flow<String> {
-        val uno = "texto"
-        val flow = flow<String> { emit("uno")  }
+        var uno = primo.toString()
+        var eco = listare(uno as List<Item>)
+        var elo = eco[1]
+        val flow = flow<String> { emit(elo)  }
         return flow
+    }
+
+
+    suspend fun par(): Flow<String> {
+        bull = _artoUiState.value.name
+        Log.d(TAG, "Hello -----------en--------mmmmmmmmmmmmm------medida 0: $bull   !")
+
+        val flow = flow<String> { emit("5")  }
+        return flow
+    }
+
+    fun inpar(): Flow<String> {
+        bull = _artoUiState.value.name
+        Log.d(TAG, "Hello -----------en--------mmmmmmmmmmmmm------medida 0: $bull   !")
+
+        val flow = flow<String> { emit("5")  }
+        return flow
+    }
+   suspend fun  ecuador(): String {
+       var uno = primo.toString()
+       var eco = listare(uno as List<Item>)
+       Log.d(TAG, "Hello -----------en--------mmmmmmmmmmmmm------medida 0: $uno   !")
+       var elo = eco[1]
+       return uno
     }
 
 
 
 
-    val gol : Flow<String> = montain()
+    val gole : Flow<Item?> = remolacha(5)
+    val gol : Flow<String> = inpar()
+    val go : Flow<String> = inpar()
+
+
 
     fun ecua(h: String): String {
         hulk = h
         return hulk
+    }
+
+
+    fun primor(): Flow<String> {
+        bull = "chicko()"
+        Log.d(TAG, "Hello -----------en--------mmmmmmmmmmmmm------medida 0: $bull   !")
+
+        val flow = flow<String> { emit(bull)  }
+        return flow
+    }
+
+    fun libro(){
+        var mil = primo
     }
 
 
@@ -223,6 +271,13 @@ class ItemEntryViewModel(private val itemsRepository: ItemsRepository) : ViewMod
         }
     }
 
+    fun remolacha(i:Int): Flow<Item?> {
+        viewModelScope.launch {
+           val ruc :Flow<Item?> = getItems(5)
+            Wolfy = ruc
+        }
+        return Wolfy
+    }
 
     fun listade(a: MutableSet<String>): List<String> {
         val ls = a.asSequence().toList()
@@ -234,6 +289,13 @@ class ItemEntryViewModel(private val itemsRepository: ItemsRepository) : ViewMod
     fun listadi(a: MutableSet<String>): List<String> {
         val ls = a.asSequence().toList()
         //chicko()
+        return ls
+
+    }
+
+
+    fun listare(a: List<Item>): List<String> {
+        val ls = a.asSequence().map { it -> it.name }.toList()
         return ls
 
     }
@@ -339,10 +401,24 @@ class ItemEntryViewModel(private val itemsRepository: ItemsRepository) : ViewMod
 
     }
 
-    fun checko() {
-        viewModelScope.launch {
+    fun checko(): Flow<String> {
 
+        viewModelScope.launch {
+            val eco:Flow<String> = par()
+            Wolfi = eco
         }
+
+        return Wolfi
+    }
+
+    fun chicko(): String {
+
+        viewModelScope.launch {
+           bull = ecuador()
+            Log.d(TAG, "Hello -----------en----hhhhhhhhhhh----------shenshen: $bull !")
+        }
+            var efo = bull
+        return efo
     }
 
     fun setNaipe(item: List<String>) {
@@ -383,10 +459,12 @@ class ItemEntryViewModel(private val itemsRepository: ItemsRepository) : ViewMod
 
     }
 
-    suspend fun getItems() {
-        itemsRepository.getAllItem()
-
+    suspend fun getItems(id: Int): Flow<Item?> {
+       var hulj = itemsRepository.getItemStream(id)
+        return hulj
     }
+
+
 
     fun setFlavor(item: String) {
         _artoUiState.update { currentState ->
@@ -395,6 +473,9 @@ class ItemEntryViewModel(private val itemsRepository: ItemsRepository) : ViewMod
         //Elefe(item)
     }
 
+    fun updateUiSteto( score: String) {
+        itemUiState = OrderUiState(score = score)
+    }
 
     fun updateUiStateto(id: Int, name: String) {
         itemUiState = OrderUiState(id = id, name = name)
@@ -410,8 +491,13 @@ class ItemEntryViewModel(private val itemsRepository: ItemsRepository) : ViewMod
 
 
     fun reloj(j:String): String {
-        bull = j
-        return bull
+
+        return j
+    }
+
+    fun red(): String {
+        hulk = bull
+        return hulk
     }
 
 

@@ -6,7 +6,7 @@ import com.example.inventory.R
 object DataSource {
     val flavors = listOf(
 
-        R.string.coffee
+      "0","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34"
     )
 
     val quantityOptions = listOf(
@@ -20,9 +20,13 @@ object DataSource {
         name = name
     )
 
+    val score = listOf<String>(
+        "0","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17",
+        "18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34")
 
 
-    data class Affirmation(val key : String, val drawable: Int)
+
+                data class Affirmation(val key : String, val drawable: Int)
     private fun loadAffirmations(): List<Affirmation> {
         return listOf<Affirmation>(
             Affirmation("appreciate", R.drawable.undraw_appreciate_it_re_yc8h),

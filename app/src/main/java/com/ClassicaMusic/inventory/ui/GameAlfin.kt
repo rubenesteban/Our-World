@@ -23,11 +23,13 @@ fun WellTaskList(
     onCloseItem: (Item) -> Unit,
     onAddTask: (Item) -> Unit,
     onAddItem: () -> Unit,
+    onOddItem: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     LazyRow(modifier = Modifier) {
         items(items = list, key = { item -> item.name })
-        { item ->  WellQouItem( item.name, onClose = {onCloseItem(item)} ,onAdd = {onAddTask(item)}, onOur = {onAddItem() }
+        { item ->  WellQouItem( item.name, onClose = {onCloseItem(item)} ,
+            onAdd = {onAddTask(item)}, onOur = {onAddItem() }, onAur = {onOddItem() }
             ) }
     }
 }
@@ -41,6 +43,7 @@ fun WellQouItem(
     onClose: () -> Unit,
     onAdd: () -> Unit,
     onOur: () -> Unit,
+    onAur: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Card(
@@ -52,6 +55,7 @@ fun WellQouItem(
                     onClose()
                     onAdd()
                     onOur()
+                    onAur()
 
             },
         elevation = 10.dp)

@@ -72,7 +72,7 @@ fun GameScreen(
                 list = viewModel.tasks,
                 onCloseTask = { tasks -> viewModel.remove(tasks, orderUiState.quantity) },
                 onAlfinTask = { tasks -> mainviewModel.chickMito( tasks.key, orderUiState.quantity)},
-                onAddTask = { viewModel.supremo(orderUiState.quantity) })
+                onAddTask = { viewModel.marte(orderUiState.quantity) })
         }
     }
 }
