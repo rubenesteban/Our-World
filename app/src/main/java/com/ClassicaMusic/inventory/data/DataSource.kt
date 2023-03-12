@@ -17,7 +17,9 @@ object DataSource {
 
     fun OrderUiState.toItem(): Item = Item(
         id = id,
-        name = name
+        name = name,
+        d = 15.0,
+        i = 25
     )
 
     val score = listOf<String>(

@@ -11,7 +11,7 @@ data class OrderUiState(
     /** Selected cupcake quantity (1, 6, 12) */
     val quantity: Int = 0,
     val time: Long = 0,
-
+    val mile: Int = 0,
     val score:String = "",
 
     //val time: Boolean = false,
@@ -44,5 +44,7 @@ data class OrderUiState(
 
 fun OrderUiState.toItem(): Item = Item(
     id = id,
-    name = name
+    name = name,
+    d = 15.0,
+    i = 25
 )

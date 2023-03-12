@@ -40,7 +40,7 @@ fun GameAsk(
    val resulta by mainviewModel.primo.collectAsState(initial = emptyList<Item?>())
     var selectedValue by rememberSaveable{ mutableStateOf("")}
 
-    val red by viewModel.go.collectAsState(initial = emptyArray<String>())
+    val red by equalviewModel.go.collectAsState(initial = emptyArray<String>())
 
     val eko = red.toString()
     selectedValue = eko
@@ -101,16 +101,16 @@ fun GameAsk(
             WellnesWrapList(
                 list = viewModel.wrap,
                 onCloseTask = { wrap -> viewModel.remove(wrap,orderUiState.quantity)},
-                onAddTask = { wrap -> mainviewModel.PalabrasUsa(wrap.key,orderUiState.quantity, currentTime, result) },
-                onOddTask = {wrap -> viewModel.PalabrasUsa(wrap.key,orderUiState.quantity, currentTime, result) },
+                onAddTask = { wrap -> viewModel.PalabrasUsa(wrap.key,orderUiState.quantity, currentTime, result) },
+                onOddTask = {wrap -> equalviewModel.PalabrasUsa(wrap.key,orderUiState.quantity, currentTime, result) },
 
                 onAlfinTask = {viewModel.theckList(result )})
 
             WellnesWrapList(
                 list = viewModel.modmar(),
                 onCloseTask = { wrap -> viewModel.remove(wrap,orderUiState.quantity)},
-                onAddTask = {wrap -> mainviewModel.PalabrasUsa(wrap.key,orderUiState.quantity, currentTime, result) },
-                onOddTask = {wrap -> viewModel.PalabrasUsa(wrap.key,orderUiState.quantity, currentTime, result) },
+                onAddTask = {wrap -> viewModel.PalabrasUsa(wrap.key,orderUiState.quantity, currentTime, result) },
+                onOddTask = {wrap -> equalviewModel.PalabrasUsa(wrap.key,orderUiState.quantity, currentTime, result) },
 
                 onAlfinTask = {viewModel.theckList(result)})
 

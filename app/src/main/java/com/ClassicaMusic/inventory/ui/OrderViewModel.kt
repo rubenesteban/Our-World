@@ -4,7 +4,6 @@ package com.ClassicaMusic.inventory.ui
 //import kotlinx.coroutines.flow.internal.NopCollector.emit
 //import kotlinx.coroutines.flow.internal.NopCollector.emit
 
-import android.content.Context
 import android.util.Log
 //import androidx.compose.foundation.gestures.ModifierLocalScrollableContainerProvider.value
 import androidx.compose.runtime.*
@@ -14,13 +13,14 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ClassicaMusic.inventory.data.Item
 import com.ClassicaMusic.inventory.data.OrderUiState
-import com.ClassicaMusic.inventory.datastore.StoreUserEmail
 import com.ClassicaMusic.inventory.ui.OrderViewModel.garci.oclose
 import com.ClassicaMusic.inventory.ui.OrderViewModel.julian.libre
 import com.ClassicaMusic.inventory.ui.OrderViewModel.pegatina.tigre
 import com.ClassicaMusic.inventory.ui.OrderViewModel.tina.leon
 
 import com.example.inventory.R
+import kotlinx.coroutines.Deferred
+import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import java.text.NumberFormat
@@ -104,6 +104,10 @@ class OrderViewModel(createSavedStateHandle: SavedStateHandle) : ViewModel(
 
 
     private var userdas: MutableSet<String> = mutableSetOf()
+
+    private var Numberti: MutableSet<Int> = mutableSetOf(0)
+
+
 
     // __________________________________________________
     var userPalabras by mutableStateOf("")
@@ -324,6 +328,17 @@ class OrderViewModel(createSavedStateHandle: SavedStateHandle) : ViewModel(
 
     // var intro = setFlavor(bull)
 
+
+    fun setMile(desiredFlavor: Int) {
+        // pora = desiredFlavor
+        _uiState.update { currentState ->
+            currentState.copy(mile = desiredFlavor)
+        }
+        Log.d(TAG, "ffffffffffffffffffffffffffffffffffffHello -----------en--------mmmmmmmmmmmmm------medida 10: $desiredFlavor  !")
+
+
+    }
+
     fun setNaipe(item: List<String>) {
         _uiState.update { currentState ->
             currentState.copy(alfin = item)
@@ -438,6 +453,7 @@ class OrderViewModel(createSavedStateHandle: SavedStateHandle) : ViewModel(
         }
 
     }
+
 
     fun Deti(u: List<String>): SnapshotStateList<String> {
         val min = u.toMutableStateList()
@@ -594,45 +610,81 @@ class OrderViewModel(createSavedStateHandle: SavedStateHandle) : ViewModel(
     }
 
 
-    fun PalabrasUsa(guessdWord: String, mas: Int, l: Long, result: List<Item>) {
-       // val inpar : Flow<String> by lazy { bar()}
-        userGues = guessdWord
-        setNami(bill)
-        Ditey(result)
-        // electro()
-        var mil = userdWords
-        var ecu = _uiState.value.alfin
-        setTimer(l)
-        var nil = 151000 - l
-        var nix = nil.toString()
-        pora = nix
-        reloj(nix)
-        Log.d(TAG, " Los elemantos son igual a-------------------->>> es: $l!")
-        if (elefante.contains(userGues) && ecu.contains(userGues)) {
-            elefante.remove(userGues)
-            userEnty.add(userGues)
-            var ecu = userEnty.size.toString()
-            updatePalabras(ecu)
-            updateMira(nix)
-            var eli =  rockbar(ecu)
-            bar()
-            rudbi()
-            plin()
-            brudbi(ecu)
-            setFlow(eli)
-            var time = 50 - elefante.size
-            var she = time.toString()
-            var tu = userEnty.size.toString()
-            setScore(tu)
-            bull = she
-            Date(she)
-            userdWords.add(userGues)
-            Log.d(TAG, " Los elemantos son igual a--------she---nnn--------->>> es: $pora!")
-            Log.d(TAG, " Los elemantos son igual a-------------------->>> es: $texto!")
-            plisen()
-            hultin()
-        }
 
+
+
+
+
+
+
+
+
+    fun PalabrasUsa(guessdWord: String, mas: Int, l: Long, m: List<Item> ) {
+        viewModelScope.launch {
+            userGues = guessdWord
+            var min = listare(m)
+            setNaipe(min)
+            Ditey(m)
+            // electro()
+
+            var ecu = _uiState.value.alfin
+            setTimer(l)
+            var nil = 151000 - l
+            var nix = nil.toString()
+            pora = nix
+            userdWords.add(userGues)
+            var mil = userdWords.size
+            reloj(nix)
+            Log.d(TAG, " Los elemantos son igual a-------------------->>> es: $l!")
+            if (elefante.contains(userGues) && ecu.contains(userGues)) {
+                elefante.remove(userGues)
+                userEnty.add(userGues)
+                var ecu = userEnty.size.toString()
+                var elot = userEnty.size
+                setMile(elot)
+                var ti  = false
+                numpar()
+                if (elot>=1){
+                    setMile(elot)
+                    if(elot>1) {
+                        val elo = listade(userEnty)
+                        setNaipe(elo)
+                       // numpar()
+                        setMile(elot)
+                        ti = true
+                       // ipar(elot)
+                    }
+
+
+                }
+
+                if(ti && mil+1 == mas){
+                    numpar()
+                   //
+                // pridby()
+                }
+
+                updatePalabras(ecu)
+                updateMira(nix)
+                var eli = rockbar(ecu)
+                bar()
+                rudbi()
+                plin()
+                brudbi(ecu)
+                setFlow(eli)
+                var time = 50 - elefante.size
+                var she = time.toString()
+                var tu = userEnty.size.toString()
+                setScore(tu)
+                bull = she
+                Date(she)
+
+                Log.d(TAG, " Los elemantos son igual a--------she---nnn--------->>> es: $pora!")
+                Log.d(TAG, " Los elemantos son igual a-------------------->>> es: $texto!")
+                plisen()
+                hultin()
+            }
+        }
     }
 
     fun luuk(): String {
@@ -983,15 +1035,19 @@ class OrderViewModel(createSavedStateHandle: SavedStateHandle) : ViewModel(
 
     var min = examen()
 
-
-
-
     ////---Wrap--------
     fun listade(a: MutableSet<String>): List<String> {
         val ls = a.asSequence().toList()
         return ls
 
     }
+
+    fun listadint(a: MutableSet<Int>): List<Int> {
+        val ls = a.asSequence().toList()
+        return ls
+
+    }
+
 
     fun listar(a: List<String>): MutableSet<String> {
         val ls = a.asSequence().toMutableSet()
@@ -1064,6 +1120,68 @@ class OrderViewModel(createSavedStateHandle: SavedStateHandle) : ViewModel(
 
     }
 
+    fun greeckList(): Flow<String> {
+        viewModelScope.launch {
+            val job1 = async { numpar() }
+            var cul = job1.await()
+           //var miel = lite(cul)
+            setFlow(cul)
+            }
+
+        var ter = _uiState.value.caballo
+        return ter
+
+    }
+
+    suspend fun numpar(): Flow<String> {
+        var rih =_uiState.value.mile.toString()
+        //var tir = rih.size.toString()
+
+        Log.d(TAG, "ffffffffffffffffffffffffffffffffffffHello -----------en--------mmmmmmmmmmmmm------medida 0: $userGues!")
+
+        val flow = flow<String> { emit(userGues)  }
+        return flow
+    }
+
+
+
+    suspend fun ipar(h:Int): Flow<String> {
+        val gul = _uiState.value.alfin
+        var hul = gul.size.toString()
+
+        Log.d(TAG, "True es false en los elemantos son igual a--------she---nnn-----iii---->>> es: $hul!")
+        val flow = flow<String> {
+        for (i in 0..h
+
+        ) {
+            val ful = gul[i]
+
+            emit(ful)
+            }
+       }
+        return flow
+    }
+
+
+
+    fun lite(l: Deferred<String>): String {
+        pora = l.toString()
+        return pora
+
+    }
+
+    suspend fun pridby(): Flow<String> {
+
+        var prin =_uiState.value.mile.toString()
+        val ti = numpar().collectLatest{it -> Work.add(it) }
+        val tin = Work.size.toString()
+       // val min = listadint(Numberti)
+      //  var yup = min[1].toString()
+        //Log.d(TAG, "ffffffffffffffffffffffffffffffffffffHello -----------en--------mmmmmmmmmmmmm------medida 0: $prin   !")
+
+        val flow = flow<String> { emit(prin)  }
+        return flow
+    }
 
 
     fun maxi(item: List<Item>): Flow<String> {
@@ -1190,8 +1308,10 @@ class OrderViewModel(createSavedStateHandle: SavedStateHandle) : ViewModel(
     }
 
     fun plin(): Flow<String> {
-        val oreo:String by lazy { ThuckList() }
-        val flow = flow<String> { emit(oreo)  }
+        //val oreo:String by lazy { "greeckList()" }
+       // greeckList()
+        //ThuckList()
+        val flow = flow<String> { emit("oreo")  }
         return flow
     }
 
@@ -1215,14 +1335,25 @@ class OrderViewModel(createSavedStateHandle: SavedStateHandle) : ViewModel(
         return item
     }
 
-    fun par(): Flow<String> {
-        var bruto = _uiState.value.score
-        val flow = flow<String> { emit(bruto) }
+    suspend fun par(): Flow<String> {
+        val flow = flow<String> {
+            emit("Flow #1")
+        }
         return flow
     }
 
 
-    val go: Flow<String> = plin()
+
+    suspend fun prudenty(): String {
+        val ti = par().collect{ it -> Work.add(it) }
+        val tin = Work.size.toString()
+        val min = listade(Work)
+        val yup = min[0]
+        return yup
+    }
+
+
+    val go: Flow<String> = greeckList()
 
     //var cucharita = setFlow(irracion)
 

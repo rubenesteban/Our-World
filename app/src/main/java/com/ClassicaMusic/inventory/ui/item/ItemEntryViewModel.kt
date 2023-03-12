@@ -127,6 +127,11 @@ class ItemEntryViewModel(private val itemsRepository: ItemsRepository) : ViewMod
 
 
 
+
+
+
+
+
     fun PalabrasUsa(guessdWord: String, mas: Int, l: Long, m: List<Item> ) {
         pina = guessdWord
         Worlds = m
@@ -535,7 +540,9 @@ data class HulkUiState(val Id: Int = 0, val name: String = "", val alfin: List<S
  */
 fun OrderUiState.toItem(): Item = Item(
     id = id,
-    name = name
+    name = name,
+    d = 15.0,
+    i = 25
 )
 
 /**
