@@ -14,8 +14,6 @@ data class OrderUiState(
     val mile: Int = 0,
     val score:String = "",
 
-    //val time: Boolean = false,
-
     /** Flavor of the cupcakes in the order (such as "Chocolate", "Vanilla", etc..) */
     val flavor: String = "",
     /** Selected date for pickup (such as "Jan 1") */
@@ -31,6 +29,8 @@ data class OrderUiState(
     val torre: List<Item> = listOf(),
 
     val caballo: Flow<String> = flowOf(),
+
+    val tigrillo: Flow<Int> = flowOf(),
 
     val id: Int = 0,
     val name: String = ""

@@ -50,7 +50,7 @@ fun GameEqual(
     var selectedValue by rememberSaveable{ mutableStateOf("")}
     var tedValue by rememberSaveable{ mutableStateOf("")}
     val redi by mainviewModel.gol.collectAsState(initial = emptyArray<String>())
-    val red by viewModel.go.collectAsState(initial = emptyArray<String>())
+    val red by equalviewModel.go.collectAsState(initial = emptyArray<String>())
 
     val eco = redi.toString()
     tedValue = eco

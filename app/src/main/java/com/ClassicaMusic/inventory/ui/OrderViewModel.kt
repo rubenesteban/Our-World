@@ -682,7 +682,7 @@ class OrderViewModel(createSavedStateHandle: SavedStateHandle) : ViewModel(
                 Log.d(TAG, " Los elemantos son igual a--------she---nnn--------->>> es: $pora!")
                 Log.d(TAG, " Los elemantos son igual a-------------------->>> es: $texto!")
                 plisen()
-                hultin()
+
             }
         }
     }
@@ -1214,10 +1214,6 @@ class OrderViewModel(createSavedStateHandle: SavedStateHandle) : ViewModel(
         var eco = _uiState.value.score
         return  eco
     }
-    fun hultin(): Flow<String> {
-      var dos =   checkList()
-        return dos
-    }
 
    suspend fun repair(): Flow<String> {
         var eco = _uiState.value.caballo
@@ -1255,7 +1251,7 @@ class OrderViewModel(createSavedStateHandle: SavedStateHandle) : ViewModel(
         lateinit var cars: String
         cars = "melocoton"
         pora = cars
-        var f = hultin().collect{ pora
+        var f  =prudby().collect{ pora
         }
         var plin = pora
         Log.d(TAG, "Hello -----------en--------mmmmmmmmmmmmm------medida 0: $bull   !")

@@ -57,7 +57,8 @@ class ItemEntryViewModel(private val itemsRepository: ItemsRepository) : ViewMod
     private var Palabras: MutableSet<String> = mutableSetOf()
     private var Palabra: MutableSet<Int> = mutableSetOf()
 
-    private var Pala: MutableSet<String> = mutableSetOf()
+    private var
+            Pala: MutableSet<String> = mutableSetOf()
     private var World: MutableSet<String> = mutableSetOf()
     private var Worlds: List<Item> = listOf()
     private var Wolf: List<String> = listOf()

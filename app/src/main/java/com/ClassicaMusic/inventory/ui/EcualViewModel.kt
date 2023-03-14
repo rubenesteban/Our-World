@@ -24,9 +24,23 @@ class EcualViewModel (createSavedStateHandle: SavedStateHandle) : ViewModel(
     private var userEnty: MutableSet<String> = mutableSetOf()
     private var userdWords: MutableSet<String> = mutableSetOf()
     private var     Work: MutableSet<String> = mutableSetOf()
+    private var     Working: MutableSet<Int> = mutableSetOf(0)
+
+
+
+
+
+
+    lateinit var hulk: String
+    lateinit var bull: String
+
+
 
 
     var userGues by mutableStateOf("")
+        private set
+
+    var userAsk by mutableStateOf("")
         private set
 
     private val TAG: String = "Reeboojjjk"
@@ -47,10 +61,7 @@ class EcualViewModel (createSavedStateHandle: SavedStateHandle) : ViewModel(
 
     }
 
-//    val primo : String by lazy { mumber(reloj()) }
-   // val prima : String by lazy { cull}
-   // val inpar : Flow<String> by lazy { checko() }
-    val par : String by lazy { reloj() }
+    //val par : String by lazy { reloj() }
    // val primo : String by lazy { rijon()}
    //val gulfi : Flow<String> by lazy { Wolfi }
 
@@ -86,37 +97,39 @@ class EcualViewModel (createSavedStateHandle: SavedStateHandle) : ViewModel(
             var min = listare(m)
             setNaipe(min)
             Ditey(m)
-            // electro()
-
             var ecu = _uiState.value.alfin
             setTimer(l)
             var nil = 151000 - l
             var nix = nil.toString()
+           // setMike(nil)
+           // bumpar()
             userdWords.add(userGues)
             var mil = userdWords.size
-
             Log.d(TAG, " Los elemantos son igual a-------------------->>> es: $l!")
             for (i in 0..mas-2){
                 if (userGues == ecu[i]) {
                     userEnty.add(userGues)
                     var ecu = userEnty.size.toString()
                     var elot = userEnty.size
-                    setMile(elot)
+                    //setMile(elot)
                     var ti = false
-                    numpar()
+                    //bumpar()
                     if (elot >= 1) {
-                        setMile(elot)
+                       // setMile(elot)
                         if (elot > 1) {
                             val elo = listade(userEnty)
                             setNaipe(elo)
                             // numpar()
                             setMile(elot)
                             ti = true
-                            // ipar(elot)
+                            global()
+
                         }
                     }
                     if(ti && mil == mas){
-                        numpar()
+                      // bumpar()
+                       //prudby()
+
                     }
                 }
             }
@@ -126,11 +139,7 @@ class EcualViewModel (createSavedStateHandle: SavedStateHandle) : ViewModel(
 
 
 
-    val gol : Flow<String> = par()
-
-
-    lateinit var hulk: String
-    lateinit var bull: String
+   // val gol : Flow<String> = par()
 
 
 
@@ -184,6 +193,18 @@ class EcualViewModel (createSavedStateHandle: SavedStateHandle) : ViewModel(
 
     }
 
+    var itemUiState by mutableStateOf(OrderUiState())
+        private set
+
+    fun updateUiSta(alfin:Int) {
+        itemUiState = OrderUiState(mile = alfin)
+    }
+
+
+    fun updateUiState(alfin:String) {
+        itemUiState = OrderUiState(flavor = alfin)
+    }
+
 
     fun setNaipe(item: List<String>) {
         _uiState.update { currentState ->
@@ -210,7 +231,6 @@ class EcualViewModel (createSavedStateHandle: SavedStateHandle) : ViewModel(
 
 
     fun setMile(desiredFlavor: Int) {
-        // pora = desiredFlavor
         _uiState.update { currentState ->
             currentState.copy(mile = desiredFlavor)
         }
@@ -220,54 +240,147 @@ class EcualViewModel (createSavedStateHandle: SavedStateHandle) : ViewModel(
     }
 
 
-    fun greeckList(): Flow<String> {
-        viewModelScope.launch {
-            val job1 = async { numpar() }
-            var cul = job1.await()
-            val job2 = async { prudenty() }
-            var cull = job2.await()
-            //var miel = lite(cul)
-
-            val flow = flow<String> { emit(cull)  }
-
-            setFlow(flow)
+    fun setMike(desiredFlavor: Long) {
+        // pora = desiredFlavor
+        _uiState.update { currentState ->
+            currentState.copy(time = desiredFlavor)
         }
 
-        var ter = _uiState.value.caballo
+    }
+
+
+    fun greeckList(): Flow<Int> {
+        viewModelScope.launch {
+            val job1 = async { prudby() }
+            val cul = job1.await()
+            if(cul >=1){
+                updateUiSta(cul)
+            }
+            Log.d(TAG, "50ffffffffffffffffffffffffffholaffffffffffHello -----------en--------mmmmmmmmmmmmm------medida 50: $userGues!")
+
+            userAsk = userGues
+            hulk  = userGues
+            setFlavor(userAsk)
+            if ( userAsk == hulk) {
+                globo()
+            }
+            val mu  = _uiState.value.mile
+            val mil = flow<Int> {emit(mu)}
+            setFliw(mil)
+        }
+
+        val ter = _uiState.value.tigrillo
         return ter
 
     }
 
-    val go: Flow<String> = greeckList()
+    fun grickList(): Flow<String> {
+        viewModelScope.launch {
+            val job3 = async { prodby() }
+            val cull = job3.await()
+            val tri = cull
+            //val flow = flow<Int> { emit(tri)  }
+            if ( userAsk == userGues) {
+                updateUiState(cull)
+
+            }
+
+            Log.d(TAG, "grickListffffffffffffffffffffffffffholaffffffffffHello -----------en--------mmmmmmmmmmmmm------medida 0: $userAsk!")
+           val eli = _uiState.value.flavor
+            val mil = flow<String> {emit(eli)}
+            setFlow(mil)
+        }
+
+        val ter = _uiState.value.caballo
+        return ter
+
+    }
 
 
-    suspend fun prudenty(): String {
-       // val job3 = numpar().run { this }
-        numpar().collect{it-> Work.add(it)}
-        // val mil = tu
 
-        val tin = Work.size.toString()
-        val min = listade(Work)
-        val yup = min[0]
-        hulk = yup
-
-        Log.d(TAG, "fffffffffffffffffffffrrrrrrrrrfffffffffffffffHello -----------en--------mmmmmmmmmmmmm------medida 0: $hulk!")
+    fun global(): Flow<Int> {
+        val resto : Flow<Int> by lazy { greeckList() }
+        return resto
+    }
 
 
-        return hulk
 
+
+
+    //val goh: Flow<String> = grickList()
+    val gok : Flow<Int> by lazy{ global() }
+    val go : Flow<String> by lazy{decahedro() }
+
+
+    fun globo(): Flow<String> {
+        val resto : Flow<String> by lazy { grickList() }
+        return resto
+    }
+
+    fun decahedro(): Flow<String> {
+        val resto : Flow<String> by lazy { globo() }
+        return resto
     }
 
 
     suspend fun numpar(): Flow<String> {
-        var rih =_uiState.value.mile.toString()
-        //var tir = rih.size.toString()
+        val rih =_uiState.value.flavor
         userGues = rih
-        Log.d(TAG, "ffffffffffffffffffffffffffffffffffffHello -----------en--------mmmmmmmmmmmmm------medida 0: $userGues!")
+        Log.d(TAG, "FlavorfffffffffHello -----------en--------mmmmmmmmmmmmm------medida 0: $userGues!")
 
         val flow = flow<String> { emit(rih)  }
+
+         return flow
+    }
+
+    suspend fun bumpar(): Flow<Int> {
+        val rih =_uiState.value.mile
+        val elo = rih.toString()
+        val flow = flow<Int> { emit(rih)  }
+        userGues = elo
+        Log.d(TAG, "fffffseoffffffffffffffffffffffffHello -----------en--------mmmmmmmmmmmmm------medida 0: $userGues!")
+
         return flow
     }
+
+
+    suspend fun prudby(): Int {
+        bumpar().collect{it-> Working.add(it)}
+        val tin = Working.size
+        val tina = Working.size.toString()
+        userGues = tina
+        Log.d(TAG, "Este es el tanano del array -----------------mmmmmmmmmmmmm------medida 0: $userGues !")
+
+        val eli = tin-1
+        val min = listadint(Working)
+        val yupi = min[eli].toString()
+        val yup = min[eli]
+        userGues = yupi
+        Log.d(TAG, "Hello -----------en--de par en hulink------mmmmmmmmmmmmm------medida 0: $userGues !")
+
+        return yup
+    }
+
+
+    suspend fun prodby(): String {
+        numpar().collect{it-> Work.add(it)}
+        val tin = Work.size
+        val tina = Work.size.toString()
+        userGues = tina
+        Log.d(TAG, "prodbyEste es el tanano del array -----------------mmmmmmmmmmmmm------medida 0: $userGues !")
+
+        val eli = tin-1
+        val min = listade (Work)
+        val yupi = min[eli].toString()
+        val yup = min[eli]
+        userGues = yupi
+        Log.d(TAG, "prodbyHello -----------en--de par en hulink------mmmmmmmmmmmmm------medida 0: $userGues !")
+
+        return yup
+    }
+
+
+
 
     fun setFlow(desiredFlavor: Flow<String>) {
         // pora = desiredFlavor
@@ -277,12 +390,26 @@ class EcualViewModel (createSavedStateHandle: SavedStateHandle) : ViewModel(
 
     }
 
+    fun setFliw(desiredFlavor: Flow<Int>) {
+        // pora = desiredFlavor
+        _uiState.update { currentState ->
+            currentState.copy(tigrillo = desiredFlavor)
+        }
+
+    }
+
+
     fun listade(a: MutableSet<String>): List<String> {
         val ls = a.asSequence().toList()
         return ls
 
     }
 
+    fun listadint(a: MutableSet<Int>): List<Int> {
+        val ls = a.asSequence().toList()
+        return ls
+
+    }
 
 
 
