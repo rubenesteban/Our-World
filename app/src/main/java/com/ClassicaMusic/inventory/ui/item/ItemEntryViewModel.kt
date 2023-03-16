@@ -23,6 +23,9 @@ import androidx.lifecycle.viewModelScope
 import com.ClassicaMusic.inventory.data.Item
 import com.ClassicaMusic.inventory.data.ItemsRepository
 import com.ClassicaMusic.inventory.data.OrderUiState
+import com.ClassicaMusic.inventory.ui.OrderViewModel
+
+import com.example.inventory.R
 import com.example.inventory.ui.item.ItemEntryViewModel.king.piramide
 import com.example.inventory.ui.item.ItemEntryViewModel.kingWork.sol
 
@@ -55,12 +58,14 @@ class ItemEntryViewModel(private val itemsRepository: ItemsRepository) : ViewMod
 
 
     private var Palabras: MutableSet<String> = mutableSetOf()
+    private var Brabas: MutableSet<String> = mutableSetOf()
     private var Palabra: MutableSet<Int> = mutableSetOf()
 
     private var
             Pala: MutableSet<String> = mutableSetOf()
     private var World: MutableSet<String> = mutableSetOf()
     private var Worlds: List<Item> = listOf()
+    private var Horlds: List<Item> = listOf()
     private var Wolf: List<String> = listOf()
     private var Wolfi: Flow<String> = flowOf()
     private var Wolfy: Flow<Item?> = flowOf()
@@ -68,20 +73,37 @@ class ItemEntryViewModel(private val itemsRepository: ItemsRepository) : ViewMod
     lateinit var hulk: String
     lateinit var hilk: String
     lateinit var bull: String
-   // ----------------------------------
+    // ----------------------------------
 
 
-    val texto : String by lazy { reloj(agua) }
+    val texto: String by lazy { reloj(agua) }
+
     //val telo : String by lazy { i }
-    val exit : MutableSet<String> by lazy { nilo()}
-    val essit : MutableSet<Int> by lazy { amazo()}
-    val inpar : Flow<String> by lazy { primor()}
-    val primo : Flow<Item?> by lazy { remolacha(5) }
-    val agua : String by lazy { red() }
+    val exit: MutableSet<String> by lazy { nilo() }
+    val essit: MutableSet<Int> by lazy { amazo() }
+    val inpar: Flow<String> by lazy { primor() }
+    val primo: Flow<Item?> by lazy { remolacha(1) }
+    val agua: String by lazy { red() }
     // ----------------------------------
 
     private var k: Int = 0
     private val TAG: String = "book"
+    object tina {
+        lateinit var cart: String
+        var UserLima: MutableSet<String> = mutableSetOf<String>("")
+
+        val leon = moyi()
+        fun moyi(): MutableSet<String> {
+            for (i in 1..49) {
+                cart = loadAffirmations()[i].key
+                UserLima.add(cart)
+
+            }
+            return UserLima
+
+        }
+
+    }
 
 
     /**
@@ -89,6 +111,14 @@ class ItemEntryViewModel(private val itemsRepository: ItemsRepository) : ViewMod
      * a validation for input values.
      */
 
+    var hipotamo = OrderViewModel.tina.leon
+
+    fun ecole(){
+        for (i in 0..48){
+            var elo = listade(hipotamo)
+            chocko(i+1, elo[i])
+        }
+    }
 
 
     fun chickMito(g: String, h: Int) {
@@ -103,9 +133,9 @@ class ItemEntryViewModel(private val itemsRepository: ItemsRepository) : ViewMod
                 //Log.d(TAG, " Este es shin en Last------>>> es: $tren!")
                 if (pelo == h) {
                     //Log.d(TAG, " Este es shin en Book de relatividad------>>> es: $Palabras!")
-                    for (i in 0..h-1){
-                        updateUiStateto(i, tren[i])
-                        inserItem()
+                    for (i in 0..h - 1) {
+                        liston(i, tren[i])
+
 
                     }
                     var elo = taskUiState.itemList
@@ -115,7 +145,7 @@ class ItemEntryViewModel(private val itemsRepository: ItemsRepository) : ViewMod
                     var hulk = elote()
                     updateUiState(tren)
                     uptaItem()
-                   // Log.d(TAG, " Este es shin en Book---c--->>> es: $elit!")
+                    // Log.d(TAG, " Este es shin en Book---c--->>> es: $elit!")
                 }
                 e += 1
                 var eng = artoUiState.value.alfin
@@ -127,59 +157,42 @@ class ItemEntryViewModel(private val itemsRepository: ItemsRepository) : ViewMod
     }
 
 
+    fun PalabrasUsa(guessdWord: String, mas: Int, l: Long, m: List<Item>) {
+        viewModelScope.launch {
+            pina = guessdWord
+            Worlds = m
+            var p = k
+            var h = k
+            var z = Worlds.size
+            World.add(pina)
+            var mit = World.size
+            for (i in 0..z - 1) {
+                if (Worlds[i].name == pina) {
+                    //chucki(i,pina)
+                    Pala.add(pina)
+                    nilo()
+                    var mill = Pala.size.toString()
+                    var millu = Pala.size
+                    hilk = mill
+
+                    h = mit - millu
+                    zanahoria(i, pina)
 
 
-
-
-
-
-    fun PalabrasUsa(guessdWord: String, mas: Int, l: Long, m: List<Item> ) {
-        pina = guessdWord
-        Worlds = m
-        var p = k
-        var h=k
-        var z = Worlds.size
-        World.add(pina)
-        var mit = World.size
-        for (i in 0..z-1){
-            if(Worlds[i].name == pina){
-                //chucki(i,pina)
-                Pala.add(pina)
-                nilo()
-                var mill = Pala.size.toString()
-                bull = mill
-                red()
-                reloj(mill)
-                updateUiSteto(mill)
-                setFlavor(texto)
-                Palabra.add(i)
-                amazo()
-                h+=1
-                if(mit == mas-1){
-                    mir(h)
-                    sir(h)
-                    var nil = h.toString()
-                   // ecuador()
-                    ecua(nil)
-                    Log.d(TAG, "Hello -----------en--------------medida 0: $h !")
                 }
-
             }
-        }
 
+            val nio = 151000 - l
+            val tri = nio.toString()
+            hulk = tri
+            if (mit == mas - 1) {
+                mir(h)
+                liston(mas,hilk)
+                liston(mas+1, hulk)
+                //liston(2,hulk)
+                Log.d(TAG, "Hello -----------en--------------medida 0: $h !")
+            }
 
-        if (mit >= mas-1) {
-            mir(8)
-            Log.d(TAG, "Hello -----------en--------------medida 0: $mit!")
-            libro()
-
-            val pi = 151000 - l
-            val time = pi.toString()
-           // bull = time
-            //reloj()
-
-            Log.d(TAG, "Hello -----------en----------jjjjjjjjjjjj----medida 0: $texto !")
-            Log.d(TAG, "Hello -----------en--------------medida 0: $pi !")
 
         }
     }
@@ -263,6 +276,17 @@ class ItemEntryViewModel(private val itemsRepository: ItemsRepository) : ViewMod
     fun chocko(i:Int, n:String) {
         viewModelScope.launch {
             InsertarBD(i, n)
+        }
+    }
+
+
+    suspend fun AptualizarBD(i:Int, n:String){
+        updateUiStateto(i, n)
+        uptaItem()
+    }
+    fun liston(i:Int, n:String) {
+        viewModelScope.launch {
+            AptualizarBD(i, n)
         }
     }
 
@@ -385,9 +409,8 @@ class ItemEntryViewModel(private val itemsRepository: ItemsRepository) : ViewMod
 
     init {
         trelo()
-        //checko()
-
-        k = 0
+         k = 0
+        ecole()
     }
 
     var e = k
@@ -402,6 +425,13 @@ class ItemEntryViewModel(private val itemsRepository: ItemsRepository) : ViewMod
     /**
      * Inserts an [Item] in the Room database
      */
+
+
+
+
+
+
+
     suspend fun saveItem() {
         itemsRepository.insertItem(itemUiState.toItem())
 
@@ -554,3 +584,64 @@ fun OrderUiState.toItem(): Item = Item(
  * Extension function to convert [Item] to [ItemDetails]
  */
 
+
+
+data class Item(val Id : Int, val name: String = "")
+
+
+data class Affirmation(val key : String, val drawable: Int)
+private fun loadAffirmations(): List<Affirmation> {
+    return listOf<Affirmation>(
+        Affirmation("appreciate", R.drawable.undraw_appreciate_it_re_yc8h),
+        Affirmation("appreciation", R.drawable.undraw_appreciation_yy29),
+        Affirmation("automobile_repair", R.drawable.undraw_automobile_repair_ywci),
+        Affirmation("baby", R.drawable.undraw_baby_re_fr9r),
+        Affirmation("barista", R.drawable.undraw_barista_re_fm8w),
+        Affirmation("basketball", R.drawable.undraw_basketball_re_7701),
+        Affirmation("beach_day", R.drawable.undraw_beach_day_cser),
+        Affirmation("blooming", R.drawable.undraw_blooming_re_2kc4),
+        Affirmation("buddies", R.drawable.undraw_buddies_2ae5),
+        Affirmation("by_my_car", R.drawable.undraw_by_my_car_xhk6),
+        Affirmation("cat", R.drawable.undraw_cat_s1wg),
+        Affirmation("cooking_ceye", R.drawable.undraw_cooking_ceye),
+        Affirmation("decorate_christmas_tree", R.drawable.undraw_decorate_christmas_tree_rmj0),
+        Affirmation("doctors", R.drawable.undraw_doctors_p6aq),
+        Affirmation("dog", R.drawable.undraw_dog_re_63j1),
+        Affirmation("educator", R.drawable.undraw_educator_re_ju47),
+        Affirmation("electricity", R.drawable.undraw_electricity_k2ft),
+        Affirmation("elements", R.drawable.undraw_elements_re_25t9),
+        Affirmation("engineering_team", R.drawable.undraw_engineering_team_a7n2),
+        Affirmation("experience_design", R.drawable.undraw_experience_design_re_dmqq),
+        Affirmation("family", R.drawable.undraw_family_vg76),
+        Affirmation("female_avatar", R.drawable.undraw_female_avatar_efig),
+        Affirmation("fingerprint_login", R.drawable.undraw_fingerprint_login_re_t71l),
+        Affirmation("flying_drone", R.drawable.undraw_flying_drone_u3r2),
+        Affirmation("gifts", R.drawable.undraw_gifts_0ceh),
+        Affirmation("good_doggy", R.drawable.undraw_good_doggy_re_eet7),
+        Affirmation("grand_slam", R.drawable.undraw_grand_slam_84ep),
+        Affirmation("halloween", R.drawable.undraw_halloween_re_2kq1),
+        Affirmation("happy_new_year", R.drawable.undraw_happy_new_year_di92),
+        Affirmation("healthy_habit", R.drawable.undraw_healthy_habit_rdky),
+        Affirmation("home_run", R.drawable.undraw_home_run_oyhw),
+        Affirmation("in_love", R.drawable.undraw_in_love_993n),
+        Affirmation("landscape_photographer", R.drawable.undraw_landscape_photographer_156c),
+        Affirmation("love_is", R.drawable.undraw_love_is_in_the_air_4uud),
+        Affirmation("make_it_rain", R.drawable.undraw_make_it_rain_re_w9pc),
+        Affirmation("male_avatar", R.drawable.undraw_male_avatar_g98d),
+        Affirmation("mindfulness", R.drawable.undraw_mindfulness_6xt3),
+        Affirmation("passing", R.drawable.undraw_passing_by_0un9),
+        Affirmation("pic_profile", R.drawable.undraw_pic_profile_re_7g2h),
+        Affirmation("profile_pic", R.drawable.undraw_profile_pic_re_iwgo),
+        Affirmation("pumpkin", R.drawable.undraw_pumpkin_re_bm46),
+        Affirmation("ready_for_waves", R.drawable.undraw_ready_for_waves_vlke),
+        Affirmation("reminder", R.drawable.undraw_reminder_re_fe15),
+        Affirmation("running", R.drawable.undraw_running_wild_h6ao  ),
+        Affirmation("scientist", R.drawable.undraw_scientist_klqc),
+        Affirmation("snow_games", R.drawable.undraw_snow_games_tq9r),
+        Affirmation("summer", R.drawable.undraw_summer_1wi4),
+        Affirmation("team", R.drawable.undraw_team_up_re_84ok),
+        Affirmation("traveling", R.drawable.undraw_traveling_qio0),
+        Affirmation("winter_skating", R.drawable.undraw_winter_skating_re_qouk),
+        Affirmation("woman", R.drawable.undraw_woman_re_afr8)
+    )
+}

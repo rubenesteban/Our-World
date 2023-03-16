@@ -16,6 +16,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 
 import com.ClassicaMusic.inventory.data.OrderUiState
 import com.example.inventory.ui.item.ItemEntryViewModel
+import kotlinx.coroutines.async
 import kotlinx.coroutines.delay
 
 
@@ -39,21 +40,33 @@ fun GameAsk(
    val result by mainviewModel.readAll.collectAsState(initial = emptyList())
    val resulta by mainviewModel.primo.collectAsState(initial = emptyList<Item?>())
     var selectedValue by rememberSaveable{ mutableStateOf("")}
+    val red by equalviewModel.go.collectAsState(initial = emptyArray<Int>())
 
-    val red by equalviewModel.go.collectAsState(initial = emptyArray<String>())
+
+    var salud by remember {
+        mutableStateOf("")
+    }
 
     val eko = red.toString()
     selectedValue = eko
 
+
+    val scope = rememberCoroutineScope()
+
     var value by remember {
         mutableStateOf(initialValue)
     }
+
+
+
     var currentTime by remember {
         mutableStateOf(totalTime)
     }
     var isTimerRunning by remember {
         mutableStateOf(true)
     }
+
+
     LaunchedEffect(key1 = currentTime, key2 = isTimerRunning) {
         if(currentTime > 0 && isTimerRunning) {
             delay(10L)
@@ -62,6 +75,10 @@ fun GameAsk(
         }else{onCancelGame()}
 
     }
+
+
+
+
 
     Column( modifier = modifier
         .padding(16.dp),
@@ -102,7 +119,7 @@ fun GameAsk(
                 list = viewModel.wrap,
                 onCloseTask = { wrap -> viewModel.remove(wrap,orderUiState.quantity)},
                 onAddTask = { wrap -> viewModel.PalabrasUsa(wrap.key,orderUiState.quantity, currentTime, result) },
-                onOddTask = {wrap -> equalviewModel.PalabrasUsa(wrap.key,orderUiState.quantity, currentTime, result) },
+                onOddTask = {wrap -> mainviewModel.PalabrasUsa(wrap.key,orderUiState.quantity, currentTime, result) },
 
                 onAlfinTask = {viewModel.theckList(result )})
 
@@ -110,7 +127,7 @@ fun GameAsk(
                 list = viewModel.modmar(),
                 onCloseTask = { wrap -> viewModel.remove(wrap,orderUiState.quantity)},
                 onAddTask = {wrap -> viewModel.PalabrasUsa(wrap.key,orderUiState.quantity, currentTime, result) },
-                onOddTask = {wrap -> equalviewModel.PalabrasUsa(wrap.key,orderUiState.quantity, currentTime, result) },
+                onOddTask = {wrap -> mainviewModel.PalabrasUsa(wrap.key,orderUiState.quantity, currentTime, result) },
 
                 onAlfinTask = {viewModel.theckList(result)})
 

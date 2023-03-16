@@ -61,11 +61,31 @@ class EcualViewModel (createSavedStateHandle: SavedStateHandle) : ViewModel(
 
     }
 
-    //val par : String by lazy { reloj() }
+   // val go : String by lazy { reloj() }
+    //val go : String by lazy { reloj() }
+   // val go : String by lazy { reloj() }
    // val primo : String by lazy { rijon()}
    //val gulfi : Flow<String> by lazy { Wolfi }
 
+
+
     fun reloj(): String {
+        viewModelScope.launch {
+            val job3 = async { prudby() }
+            val cull = job3.await()
+            val tri = cull.toString()
+            //val flow = flow<Int> { emit(tri)  }
+
+            updateUiState(tri)
+
+        }
+
+        val ter = _uiState.value.flavor
+        return ter
+
+    }
+
+    private fun time(): String {
         var k = hulk
         return k
     }
@@ -264,9 +284,12 @@ class EcualViewModel (createSavedStateHandle: SavedStateHandle) : ViewModel(
             if ( userAsk == hulk) {
                 globo()
             }
-            val mu  = _uiState.value.mile
-            val mil = flow<Int> {emit(mu)}
+           val mu  = _uiState.value.mile
+           val mil = flow<Int> {emit(mu)}
             setFliw(mil)
+            //val mu  = _uiState.value.mile
+           // val mil = flow<Int> {emit(mu)}
+            //setFliw(mil)
         }
 
         val ter = _uiState.value.tigrillo
@@ -276,17 +299,21 @@ class EcualViewModel (createSavedStateHandle: SavedStateHandle) : ViewModel(
 
     fun grickList(): Flow<String> {
         viewModelScope.launch {
-            val job3 = async { prodby() }
+            val resto : String by lazy { time() }
+            val job3 = async { numpar() }
             val cull = job3.await()
             val tri = cull
             //val flow = flow<Int> { emit(tri)  }
-            if ( userAsk == userGues) {
-                updateUiState(cull)
+            if ( userAsk == userGues ) {
+                //updateUiState(cull)
+                hulk = userAsk
+                time()
+                reloj()
 
             }
 
             Log.d(TAG, "grickListffffffffffffffffffffffffffholaffffffffffHello -----------en--------mmmmmmmmmmmmm------medida 0: $userAsk!")
-           val eli = _uiState.value.flavor
+           val eli = resto
             val mil = flow<String> {emit(eli)}
             setFlow(mil)
         }
@@ -298,18 +325,121 @@ class EcualViewModel (createSavedStateHandle: SavedStateHandle) : ViewModel(
 
 
 
-    fun global(): Flow<Int> {
-        val resto : Flow<Int> by lazy { greeckList() }
-        return resto
+
+
+    fun ExampleckList(): String {
+        viewModelScope.launch {
+
+            val resul = viewModelScope.async{
+                10*10
+
+            }.await()
+            var elo = resul.toString()
+            setFlavor(elo)
+        }
+
+        val ter = _uiState.value.flavor
+        return ter
+
     }
 
 
 
 
 
-    //val goh: Flow<String> = grickList()
-    val gok : Flow<Int> by lazy{ global() }
-    val go : Flow<String> by lazy{decahedro() }
+
+
+    fun global(): Flow<Int> {
+        val resto : Flow<Int> by lazy { greeckList() }
+        //griockList()
+        return resto
+    }
+
+    fun griockList(): Flow<String> {
+        viewModelScope.launch {
+            val job3 = async { decahedro() }
+            val cull = job3.await()
+            val rih = cull
+            userGues = rih
+            Log.d(TAG, "GGGGGGGGGGGGGGGGGGGGGGGGGGGGGriockListfffffffffHello -----------en--------mmmmmmmmmmmmm------medida 0: $userGues!")
+
+            val flow = flow<String> { emit(rih)  }
+
+
+             setFlow(flow)
+        }
+
+        val ter = _uiState.value.caballo
+        return ter
+
+    }
+
+
+    fun westList(): String {
+        viewModelScope.launch {
+            val job3 = async { reloj() }
+            val cull = job3.await()
+            setFlavor(cull)
+        }
+
+        val ter = _uiState.value.flavor
+        return ter
+
+    }
+
+
+    fun oestList(): Flow<String> {
+        viewModelScope.launch {
+            val job3 = async { reloj() }
+            val cull = job3.await()
+            val tri = cull
+            val flow = flow<String> { emit(tri)  }
+
+            setFlow(flow)
+        }
+
+        val ter = _uiState.value.caballo
+        return ter
+
+    }
+    fun NothtList(): Flow<String> {
+        viewModelScope.launch {
+            val job3 = async { ExampleckList() }
+            val cull = job3.await()
+            val tri = cull
+            val flow = flow<String> { emit(tri)  }
+
+            setFlow(flow)
+        }
+
+        val ter = _uiState.value.caballo
+        return ter
+
+    }
+
+    fun decahedro(): String {
+        viewModelScope.launch {
+            val job3 = async { prodby() }
+            val cull = job3.await()
+            val tri = cull
+            //val flow = flow<Int> { emit(tri)  }
+
+            updateUiState(cull)
+
+        }
+
+        val ter = _uiState.value.flavor
+        return ter
+
+    }
+
+
+
+
+    val gor: Flow<String> = oestList()
+    val go : Flow<Int> by lazy { global() }
+    val gog : Flow<String> by lazy{ NothtList() }
+    //val carrro : String by lazy { reloj() }
 
 
     fun globo(): Flow<String> {
@@ -317,21 +447,31 @@ class EcualViewModel (createSavedStateHandle: SavedStateHandle) : ViewModel(
         return resto
     }
 
-    fun decahedro(): Flow<String> {
-        val resto : Flow<String> by lazy { globo() }
-        return resto
-    }
+
 
 
     suspend fun numpar(): Flow<String> {
-        val rih =_uiState.value.flavor
+        val rih = westList()
         userGues = rih
-        Log.d(TAG, "FlavorfffffffffHello -----------en--------mmmmmmmmmmmmm------medida 0: $userGues!")
+        Log.d(TAG, "numparfffffffffHello -----------en--------mmmmmmmmmmmmm------medida 0: $userGues!")
 
         val flow = flow<String> { emit(rih)  }
 
          return flow
     }
+
+
+    suspend fun nipar(): Flow<String> {
+        val rih = ExampleckList()
+        userGues = rih
+        Log.d(TAG, "numparfffffffffHello -----------en--------mmmmmmmmmmmmm------medida 0: $userGues!")
+
+        val flow = flow<String> { emit(rih)  }
+
+        return flow
+    }
+
+
 
     suspend fun bumpar(): Flow<Int> {
         val rih =_uiState.value.mile
@@ -356,6 +496,7 @@ class EcualViewModel (createSavedStateHandle: SavedStateHandle) : ViewModel(
         val yupi = min[eli].toString()
         val yup = min[eli]
         userGues = yupi
+
         Log.d(TAG, "Hello -----------en--de par en hulink------mmmmmmmmmmmmm------medida 0: $userGues !")
 
         return yup
@@ -374,6 +515,7 @@ class EcualViewModel (createSavedStateHandle: SavedStateHandle) : ViewModel(
         val yupi = min[eli].toString()
         val yup = min[eli]
         userGues = yupi
+        setFlavor(yup)
         Log.d(TAG, "prodbyHello -----------en--de par en hulink------mmmmmmmmmmmmm------medida 0: $userGues !")
 
         return yup

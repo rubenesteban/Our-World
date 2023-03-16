@@ -20,6 +20,7 @@ import com.ClassicaMusic.inventory.data.OrderUiState
 import com.ClassicaMusic.inventory.datastore.StoreUserEmail
 
 import com.example.inventory.ui.item.ItemEntryViewModel
+import kotlinx.coroutines.async
 
 
 //import kotlinx.coroutines.DefaultExecutor.delay
@@ -49,14 +50,71 @@ fun GameEqual(
     val result by mainviewModel.readAll.collectAsState(initial = emptyList())
     var selectedValue by rememberSaveable{ mutableStateOf("")}
     var tedValue by rememberSaveable{ mutableStateOf("")}
-    val redi by mainviewModel.gol.collectAsState(initial = emptyArray<String>())
+    val redi by mainviewModel.primo.collectAsState(initial = emptyList<com.ClassicaMusic.inventory.data.Item?>())
     val red by equalviewModel.go.collectAsState(initial = emptyArray<String>())
+    val pi = orderUiState.quantity
 
-    val eco = redi.toString()
-    tedValue = eco
 
-    val eko = red.toString()
+
+
+
+
+
+
+
+    var salud by remember {
+        mutableStateOf("")
+    }
+
+    val eko = salud
     selectedValue = eko
+
+
+    val scope = rememberCoroutineScope()
+
+    var iScoreRunning by remember {
+        mutableStateOf(true)
+    }
+
+
+    LaunchedEffect(key1 = iScoreRunning) {
+        scope.async {
+            iScoreRunning
+
+
+            fun listare(a: List<com.ClassicaMusic.inventory.data.Item>): List<String> {
+                val ls = a.asSequence().map { it -> it.name }.toList()
+                return ls
+
+            }
+
+            fun sink(a: List<com.ClassicaMusic.inventory.data.Item?>): String {
+                val elo = listare(a as List<Item>)
+                val ni = elo.size
+                val ky = elo.size.toString()
+               // val hu = orderUiState.quantity
+               // val lk = 49 - ni
+               // val rin = lk.toString()
+              ////  val ny = elo[ni-1]
+
+                return ky
+
+            }
+
+            val job3 = async { sink(result) }
+            val cull = job3.await()
+            // val tri = cull
+            //val flow = flow<String> { emit(tri)  }
+
+            // val nilo =
+            salud = cull
+
+        }.await()
+
+        //salud = "nilo"
+
+    }
+
 
 
 
@@ -88,7 +146,7 @@ fun GameEqual(
                 list = result,
                 onCloseItem = {item -> viewModel.removae(item.name)},
                 onAddTask = {item ->viewModel.Plavores(item.id, item.name)},
-                onAddItem = { viewModel.flavores(eco, eko)},
+                onAddItem = { viewModel.setScore(eko)},
                 onOddItem = { viewModel.setScore(eko)}
             )
         }

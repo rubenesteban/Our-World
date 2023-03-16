@@ -28,7 +28,10 @@ object DataSource {
 
 
 
-                data class Affirmation(val key : String, val drawable: Int)
+
+
+
+    data class Affirmation(val key : String, val drawable: Int)
     private fun loadAffirmations(): List<Affirmation> {
         return listOf<Affirmation>(
             Affirmation("appreciate", R.drawable.undraw_appreciate_it_re_yc8h),

@@ -19,20 +19,23 @@ class StoreUserEmail(private val context: Context) {
 
     // to make sure there is only one instance
     companion object {
-        private val Context.dataStore: DataStore<Preferences> by preferencesDataStore("UserEmail")
-        val USER_EMAIL_KEY = stringPreferencesKey("user_email")
+        val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
+        val EXAMPLE_COUNTER = intPreferencesKey("example_counter")
     }
 
     // to get the email
-    val getEmail: Flow<String?> = context.dataStore.data
+    //val EXAMPLE_COUNTER = intPreferencesKey("example_counter")
+    val exampleCounterFlow: Flow<Int> = context.dataStore.data
         .map { preferences ->
-            preferences[USER_EMAIL_KEY] ?: ""
+            // No type safety.
+            preferences[EXAMPLE_COUNTER] ?: 0
         }
 
     // to save the email
-    suspend fun saveEmail(name: String) {
-        context.dataStore.edit { preferences ->
-            preferences[USER_EMAIL_KEY] = name
+    suspend fun incrementCounter(i:Int) {
+        context.dataStore.edit { settings ->
+            val currentCounterValue = settings[EXAMPLE_COUNTER] ?: 0
+            settings[EXAMPLE_COUNTER] = currentCounterValue + i
         }
     }
 }

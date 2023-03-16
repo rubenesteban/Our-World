@@ -18,6 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.ClassicaMusic.inventory.data.Item
@@ -28,7 +29,9 @@ import com.ClassicaMusic.inventory.datastore.StoreUserEmail
 
 import com.example.inventory.R
 import com.example.inventory.ui.item.ItemEntryViewModel
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
+import org.w3c.dom.Text
 
 
 /**
@@ -48,20 +51,37 @@ fun OrderSummaryScreen(
 ){
     val resources = LocalContext.current.resources
 
-    val list by mainviewModel.readAll.collectAsState(initial = emptyList<Item>())
+    val list by mainviewModel.primo.collectAsState(initial = emptyList<Item?>())
     val foll by mainviewModel.gol.collectAsState(initial = emptyArray<String>())
     val fill by viewModel.bit.collectAsState(initial = emptyArray<String>())
+
+
+    val result by mainviewModel.readAll.collectAsState(initial = emptyList())
+    var selectedValue by rememberSaveable{ mutableStateOf("")}
+    var seleValue by rememberSaveable{ mutableStateOf(0)}
+
+
+    var score by remember { mutableStateOf(0) }
+    var amor by remember {
+        mutableStateOf(0)
+    }
 
     val bat = foll
     val aro = fill
     val context = LocalContext.current
-    val scope = rememberCoroutineScope()
+    //val scope = rememberCoroutineScope()
     val dataStore = StoreUserEmail(context)
-    val savedEmail = dataStore.getEmail.collectAsState(initial = "")
+    val savedEmail = dataStore.exampleCounterFlow.collectAsState(initial = 0)
 
     var email by remember { mutableStateOf("") }
 
-    email = orderUiState.name
+
+    email = orderUiState.score
+
+    seleValue = amor
+    var tri = amor.toString()
+
+
     val numberOfCupcakes = resources.getQuantityString(
         R.plurals.cupcakes,
         orderUiState.quantity,
@@ -82,10 +102,61 @@ fun OrderSummaryScreen(
         // Summary line 1: display selected quantity
         Pair(stringResource(R.string.quantity), numberOfCupcakes),
         // Summary line 2: display selected flavor
-        Pair(stringResource(R.string.flavor), orderUiState.score),
+        Pair(stringResource(R.string.flavor), "$tri"),
         // Summary line 3: display selected pickup date
-        Pair(stringResource(R.string.pickup_date), savedEmail.value!!)
+        Pair(stringResource(R.string.pickup_date), savedEmail.value.toString())
     )
+
+
+
+
+
+
+
+    val scope = rememberCoroutineScope()
+
+    var iScoreRunning by remember {
+        mutableStateOf(true)
+    }
+
+
+    LaunchedEffect(key1 = iScoreRunning) {
+        scope.async {
+            iScoreRunning
+
+
+            fun listare(a: List<com.ClassicaMusic.inventory.data.Item>): List<String> {
+                val ls = a.asSequence().map { it -> it.name }.toList()
+                return ls
+
+            }
+
+            fun sink(a: List<com.ClassicaMusic.inventory.data.Item?>): Int {
+                val elo = listare(a as List<Item>)
+                val hul = elo.size.toString()
+                val ni = elo.size
+               // val hu = orderUiState.quantity
+               // val lk = 49 - ni
+               // val rin = lk.toString()
+                //val vul = elo[ni-1]
+
+                return ni
+
+            }
+
+            val job3 = async { sink(result) }
+            val cull = job3.await()
+            // val tri = cull
+            //val flow = flow<String> { emit(tri)  }
+
+            // val nilo =
+            amor = cull
+
+        }.await()
+
+        //salud = "nilo"
+
+    }
 
     Column (
         modifier = modifier.padding(16.dp),
@@ -98,12 +169,12 @@ fun OrderSummaryScreen(
         }
         Spacer(modifier = Modifier.height(8.dp))
         FormattedPriceLabel(
-            subtotal = orderUiState.flavor,
+            subtotal = orderUiState.score,
             modifier = Modifier.align(Alignment.End)
         )
         Button(
             modifier = Modifier.fillMaxWidth(),
-            onClick = { scope.launch { dataStore.saveEmail(email) }  }
+            onClick = { scope.launch { dataStore.incrementCounter(amor) }  }
         ) {
             Text(stringResource(R.string.send))
         }
@@ -123,6 +194,8 @@ fun OrderSummaryScreen(
 
     }
 }
+
+
 /**
 @Preview
 @Composable

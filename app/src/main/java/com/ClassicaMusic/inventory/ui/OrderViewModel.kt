@@ -148,6 +148,7 @@ class OrderViewModel(createSavedStateHandle: SavedStateHandle) : ViewModel(
     private var Wolfi: Flow<String> = flowOf()
 
     var Usertitis: List<String> = listOf()
+    var Usertritis: List<com.ClassicaMusic.inventory.data.Item> = listOf()
     var UserYuyu: MutableSet<String> = mutableSetOf<String>("")
     var UserMars: MutableSet<String> = mutableSetOf<String>("")
     var UserLuna: MutableSet<String> = mutableSetOf<String>("")
@@ -1098,7 +1099,7 @@ class OrderViewModel(createSavedStateHandle: SavedStateHandle) : ViewModel(
         Log.d(TAG, "Hello -----------enter---------------nilo: $toque!")
     }
 
-    suspend fun supremo(item: List<Item>): Flow<String> {
+    suspend fun supremo(item: List<Item>): String {
         var min = listare(item)
         setNaipe(min)
         Ditey(item)
@@ -1106,14 +1107,18 @@ class OrderViewModel(createSavedStateHandle: SavedStateHandle) : ViewModel(
         var elo = brudbi(eco)
         var hulk = par()
         setScore(eco)
-        return  hulk
+        return  eco
 
     }
+
+
+
 
     fun theckList(item: List<Item>): Flow<String> {
         viewModelScope.launch {
            var eco = supremo(item)
-           var lim = setFlow(eco)
+            val mil = flow<String> {emit(eco)}
+            setFlow(mil)
         }
         var lin = _uiState.value.caballo
         return lin
