@@ -15,6 +15,8 @@ import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -34,7 +36,9 @@ fun StartOrderScreen(
     quantityOptions: List<Pair<Int, Int>>,
     onNextButtonClicked: (Int) -> Unit,
     modifier: Modifier = Modifier
+    //mainviewModel: ItemEntryViewModel = viewModel(factory = AppViewModelProvider.Factory)
 ){
+    //val result by mainviewModel.readAll.collectAsState(initial = emptyList())
 
     Column(
         modifier = modifier.padding(16.dp).fillMaxWidth(),

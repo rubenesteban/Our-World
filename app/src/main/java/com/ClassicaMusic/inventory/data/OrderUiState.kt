@@ -13,6 +13,7 @@ data class OrderUiState(
     val time: Long = 0,
     val mile: Int = 0,
     val score:String = "",
+    val tri :Boolean = false,
 
     /** Flavor of the cupcakes in the order (such as "Chocolate", "Vanilla", etc..) */
     val flavor: String = "",

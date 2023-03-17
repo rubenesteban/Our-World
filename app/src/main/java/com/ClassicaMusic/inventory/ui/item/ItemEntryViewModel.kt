@@ -58,7 +58,7 @@ class ItemEntryViewModel(private val itemsRepository: ItemsRepository) : ViewMod
 
 
     private var Palabras: MutableSet<String> = mutableSetOf()
-    private var Brabas: MutableSet<String> = mutableSetOf()
+    private var Brabas: MutableSet<com.ClassicaMusic.inventory.data.Item> = mutableSetOf()
     private var Palabra: MutableSet<Int> = mutableSetOf()
 
     private var
@@ -73,6 +73,7 @@ class ItemEntryViewModel(private val itemsRepository: ItemsRepository) : ViewMod
     lateinit var hulk: String
     lateinit var hilk: String
     lateinit var bull: String
+    var tree :Boolean = true
     // ----------------------------------
 
 
@@ -82,7 +83,7 @@ class ItemEntryViewModel(private val itemsRepository: ItemsRepository) : ViewMod
     val exit: MutableSet<String> by lazy { nilo() }
     val essit: MutableSet<Int> by lazy { amazo() }
     val inpar: Flow<String> by lazy { primor() }
-    val primo: Flow<Item?> by lazy { remolacha(1) }
+    val primo: Flow<Item?> by lazy { molacha(5) }
     val agua: String by lazy { red() }
     // ----------------------------------
 
@@ -113,16 +114,17 @@ class ItemEntryViewModel(private val itemsRepository: ItemsRepository) : ViewMod
 
     var hipotamo = OrderViewModel.tina.leon
 
-    fun ecole(){
-        for (i in 0..48){
+    fun ecole(j:Int){
+        for (i in 1..j+2){
             var elo = listade(hipotamo)
-            chocko(i+1, elo[i])
+            chocko(i, elo[i])
         }
     }
 
 
     fun chickMito(g: String, h: Int) {
         viewModelScope.launch {
+           // ecole()
             pina = g
             if (e <= h) {
                 Palabras.add(pina)
@@ -133,25 +135,11 @@ class ItemEntryViewModel(private val itemsRepository: ItemsRepository) : ViewMod
                 //Log.d(TAG, " Este es shin en Last------>>> es: $tren!")
                 if (pelo == h) {
                     //Log.d(TAG, " Este es shin en Book de relatividad------>>> es: $Palabras!")
-                    for (i in 0..h - 1) {
-                        liston(i, tren[i])
-
-
+                    for (i in 1..h ) {
+                        liston(i, tren[i-1])
                     }
-                    var elo = taskUiState.itemList
-                    setNaipe(tren)
-                    //Log.d(TAG, " Este es shin en Book------>>> es: $elo!")
-                    updateUiSta(tren)
-                    var hulk = elote()
-                    updateUiState(tren)
-                    uptaItem()
-                    // Log.d(TAG, " Este es shin en Book---c--->>> es: $elit!")
                 }
-                e += 1
-                var eng = artoUiState.value.alfin
 
-                Log.d(TAG, " Este es shin en Book------>>> es: $eng!")
-                checko()
             }
         }
     }
@@ -161,8 +149,6 @@ class ItemEntryViewModel(private val itemsRepository: ItemsRepository) : ViewMod
         viewModelScope.launch {
             pina = guessdWord
             Worlds = m
-            var p = k
-            var h = k
             var z = Worlds.size
             World.add(pina)
             var mit = World.size
@@ -173,12 +159,10 @@ class ItemEntryViewModel(private val itemsRepository: ItemsRepository) : ViewMod
                     nilo()
                     var mill = Pala.size.toString()
                     var millu = Pala.size
+                    var ti = mas + millu
+                    //chocko(ti, pina)
                     hilk = mill
-
-                    h = mit - millu
                     zanahoria(i, pina)
-
-
                 }
             }
 
@@ -186,11 +170,13 @@ class ItemEntryViewModel(private val itemsRepository: ItemsRepository) : ViewMod
             val tri = nio.toString()
             hulk = tri
             if (mit == mas - 1) {
-                mir(h)
-                liston(mas,hilk)
-                liston(mas+1, hulk)
+
+               // var eli = hilk as Int
+
+               liston(mas+1,hilk)
+               liston(mas+2, hulk)
                 //liston(2,hulk)
-                Log.d(TAG, "Hello -----------en--------------medida 0: $h !")
+               // Log.d(TAG, "Hello -----------en--------------medida 500000: $eli !")
             }
 
 
@@ -301,9 +287,23 @@ class ItemEntryViewModel(private val itemsRepository: ItemsRepository) : ViewMod
         }
     }
 
-    fun remolacha(i:Int): Flow<Item?> {
+
+    fun remolacha(d:Int): Flow<Item?> {
         viewModelScope.launch {
-           val ruc :Flow<Item?> = getItems(5)
+            for (i in 1.. d) {
+                val ruc: Flow<Item?> = getItems(i)
+                     Wolfy = ruc
+            }
+
+        }
+        return Wolfy
+    }
+
+
+
+    fun molacha(d:Int): Flow<Item?> {
+        viewModelScope.launch {
+            val ruc: Flow<Item?> = getItems(d)
             Wolfy = ruc
         }
         return Wolfy
@@ -404,13 +404,14 @@ class ItemEntryViewModel(private val itemsRepository: ItemsRepository) : ViewMod
         hulk = "ok"
         hilk = "elo"
         bull = "miel"
+        tree = true
     }
 
 
     init {
         trelo()
          k = 0
-        ecole()
+       // ecole()
     }
 
     var e = k
@@ -502,12 +503,40 @@ class ItemEntryViewModel(private val itemsRepository: ItemsRepository) : ViewMod
 
 
 
+    fun ekole(j:Int, h:String, g:Int){
+        //zanahoria(j,h)
+        pina = h
+        World.add(pina)
+        //var eco = Worlds[z-1].name
+       // Log.d(TAG, "Hello -----------en--------------medida500000: $z !")
+    }
+
+
+    fun theckList(e:List<Item>, u:Int){
+        var eco = listare(e)
+        var z = eco.size
+        var trin:Boolean
+
+        if(tree) {
+            for (i in 0..z - 1) {
+                e[i].name = pina
+                zanahoria(i, pina)
+                 }
+            tree = false
+        }
+        ecole(u)
+
+    }
+
+
     fun setFlavor(item: String) {
         _artoUiState.update { currentState ->
             currentState.copy(name = item)
         }
         //Elefe(item)
     }
+
+
 
     fun updateUiSteto( score: String) {
         itemUiState = OrderUiState(score = score)

@@ -10,14 +10,12 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.ClassicaMusic.inventory.data.Item
 
 import com.ClassicaMusic.inventory.data.OrderUiState
-import com.ClassicaMusic.inventory.datastore.StoreUserEmail
 
 import com.example.inventory.ui.item.ItemEntryViewModel
 import kotlinx.coroutines.async
@@ -52,22 +50,29 @@ fun GameEqual(
     var tedValue by rememberSaveable{ mutableStateOf("")}
     val redi by mainviewModel.primo.collectAsState(initial = emptyList<com.ClassicaMusic.inventory.data.Item?>())
     val red by equalviewModel.go.collectAsState(initial = emptyArray<String>())
-    val pi = orderUiState.quantity
+    //val desult by mainviewModel.primo.collectAsState(initial = emptyList())
 
 
 
 
 
 
-
-
-
-    var salud by remember {
-        mutableStateOf("")
+    var score by remember { mutableStateOf("") }
+    var amor by remember {
+        mutableStateOf(0)
     }
 
-    val eko = salud
-    selectedValue = eko
+    //seleValue = amor
+    var tri = amor.toString()
+
+
+    val eko = score
+    selectedValue = eko.toString()
+
+
+    //tedValue = score
+
+
 
 
     val scope = rememberCoroutineScope()
@@ -90,14 +95,16 @@ fun GameEqual(
 
             fun sink(a: List<com.ClassicaMusic.inventory.data.Item?>): String {
                 val elo = listare(a as List<Item>)
+                val hul = elo.size.toString()
                 val ni = elo.size
-                val ky = elo.size.toString()
-               // val hu = orderUiState.quantity
-               // val lk = 49 - ni
-               // val rin = lk.toString()
-              ////  val ny = elo[ni-1]
+                val kul = orderUiState.quantity - ni + 2
+                val wul = kul.toString()
+                // val hu = orderUiState.quantity
+                // val lk = 49 - ni
+                //val rin = lk.toString()
+                //val vul = elo[ni-1]
 
-                return ky
+                return wul
 
             }
 
@@ -107,15 +114,13 @@ fun GameEqual(
             //val flow = flow<String> { emit(tri)  }
 
             // val nilo =
-            salud = cull
+            score = cull
 
         }.await()
 
         //salud = "nilo"
 
     }
-
-
 
 
 
@@ -144,8 +149,8 @@ fun GameEqual(
         ) {
             WellTaskList(
                 list = result,
-                onCloseItem = {item -> viewModel.removae(item.name)},
-                onAddTask = {item ->viewModel.Plavores(item.id, item.name)},
+                onCloseItem = { item -> viewModel.removae(item.name)},
+                onAddTask = { item ->mainviewModel.ekole(item.id, item.name, orderUiState.quantity )},
                 onAddItem = { viewModel.setScore(eko)},
                 onOddItem = { viewModel.setScore(eko)}
             )

@@ -104,7 +104,7 @@ fun OrderSummaryScreen(
         // Summary line 2: display selected flavor
         Pair(stringResource(R.string.flavor), "$tri"),
         // Summary line 3: display selected pickup date
-        Pair(stringResource(R.string.pickup_date), savedEmail.value.toString())
+        Pair(stringResource(R.string.pickup_date), "$tri")
     )
 
 
@@ -137,8 +137,9 @@ fun OrderSummaryScreen(
                 val ni = elo.size
                // val hu = orderUiState.quantity
                // val lk = 49 - ni
-               // val rin = lk.toString()
-                //val vul = elo[ni-1]
+                //val rin = lk.toString()
+               // val vul = a[ni].name
+                //val cue = vul as Int
 
                 return ni
 

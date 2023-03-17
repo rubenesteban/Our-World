@@ -70,9 +70,10 @@ fun GameScreen(
         ) {
             WellnesTaskList(
                 list = viewModel.tasks,
+                onAddTask = { mainviewModel.theckList(result, orderUiState.quantity) },
                 onCloseTask = { tasks -> viewModel.remove(tasks, orderUiState.quantity) },
-                onAlfinTask = { tasks -> mainviewModel.chickMito( tasks.key, orderUiState.quantity)},
-                onAddTask = { viewModel.marte(orderUiState.quantity) })
+                onAlfinTask = { tasks -> mainviewModel.chickMito( tasks.key, orderUiState.quantity)})
+
         }
     }
 }

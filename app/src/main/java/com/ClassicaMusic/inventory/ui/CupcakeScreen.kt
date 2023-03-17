@@ -60,7 +60,7 @@ fun CupcakeAppBar(
         title = { Text(stringResource(currentScreen.title)) },
         modifier = modifier,
         navigationIcon = {
-            if (canNavigateBack) {
+            if (false) {
                 IconButton(onClick = navigateUp) {
                     Icon(
                         imageVector = Icons.Filled.ArrowBack,
@@ -98,6 +98,10 @@ fun CupcakeApp(
         }
     ) { innerPadding ->
         val uiState by viewModel.uiState.collectAsState()
+
+
+        val result by mainviewModel.readAll.collectAsState(initial = emptyList())
+
         NavHost(
             navController = navController,
             startDestination = CupcakeScreen.Start.name,
@@ -154,6 +158,7 @@ fun CupcakeApp(
                     onNextButtonClicked = {
                         navController.navigate(CupcakeScreen.Summary.name)
                         viewModel.setScore(it)
+                        mainviewModel.theckList(result,uiState.quantity)
 
                     },
                     onSelectionChanged = {viewModel.setScore(it)},
